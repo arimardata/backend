@@ -11,15 +11,6 @@ public class AppelOffre extends BaseEntity {
     private static final long serialVersionUID = 7954325925563724764L;
 
     private String id;
-    private String files;
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setFiles(String files) {
-        this.files = files;
-    }
 
     private String chef_ouvrage;
     private String Num_AO;
@@ -29,6 +20,55 @@ public class AppelOffre extends BaseEntity {
     private String Type;
     private String Ville;
     private String Estimation;
+    private String Date_Limite;
+    private String Autres_details;
+    private String etat;
+    private String pdfs;
+    private String files;
+
+    public String getDate_Limite() {
+        return this.Date_Limite;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setDate_Limite(String Date_Limite) {
+        this.Date_Limite = Date_Limite;
+    }
+
+    public String getAutres_details() {
+        return this.Autres_details;
+    }
+
+    public void setAutres_details(String Autres_details) {
+        this.Autres_details = Autres_details;
+    }
+
+    public String getEtat() {
+        return this.etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public String getPdfs() {
+        return this.pdfs;
+    }
+
+    public void setPdfs(String pdfs) {
+        this.pdfs = pdfs;
+    }
+
+    public String getFiles() {
+        return this.files;
+    }
+
+    public void setFiles(String files) {
+        this.files = files;
+    }
 
     public String getId() {
         return this.id;
