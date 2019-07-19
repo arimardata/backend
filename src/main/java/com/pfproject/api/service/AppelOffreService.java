@@ -6,11 +6,13 @@ import java.util.List;
 
 public interface AppelOffreService {
 
-    AppelOffre find(String id);
+	AppelOffre find(String id);
 
-    List<AppelOffre> findAll();
+	List<AppelOffre> findAll();
 
-    AppelOffre update(String id, AppelOffre object);
+	AppelOffre update(String id, AppelOffre object);
 
-    String delete(String id);
+	String delete(String id);
+
+	/*void Change_Etat(String id, String etat);*/
 }
