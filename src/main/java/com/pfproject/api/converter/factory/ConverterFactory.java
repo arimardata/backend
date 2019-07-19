@@ -9,11 +9,10 @@ import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
-
 @Component
 public class ConverterFactory {
 
-    private Map<Object, Converter> converters;
+    private Map<Object, Converter<?, ?>> converters;
 
     public ConverterFactory() {
 

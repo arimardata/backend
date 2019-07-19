@@ -2,7 +2,6 @@ package com.pfproject.api.controller;
 
 import com.pfproject.api.model.ResponseWithToken;
 import com.pfproject.api.dto.LoginDTO;
-import com.pfproject.api.model.User;
 
 import com.pfproject.api.dto.MessageDTO;
 import com.pfproject.api.security.service.TokenService;

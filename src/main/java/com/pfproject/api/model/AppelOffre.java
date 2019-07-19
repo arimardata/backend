@@ -1,20 +1,18 @@
 package com.pfproject.api.model;
 
-import java.util.Collection;
-import java.util.List;
-
-import org.springframework.data.annotation.Id;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "AppelOffre")
 public class AppelOffre extends BaseEntity {
 
 	private static final long serialVersionUID = 7954325925563724764L;
-
-	private String id;
+	private ObjectId id;
 
 	private String chef_ouvrage;
 	private String Num_AO;
+	private String Num_Ordre;
+
 	private String Caution;
 	private String Mise_en_ligne;
 	private String Type;
@@ -26,12 +24,28 @@ public class AppelOffre extends BaseEntity {
 	private String pdfs;
 	private String files;
 
+	public AppelOffre() {
+
+	}
+
+	public String getNum_Ordre() {
+		return this.Num_Ordre;
+	}
+
+	public void setNum_Ordre(String Num_Ordre) {
+		this.Num_Ordre = Num_Ordre;
+	}
+
 	public String getDate_Limite() {
 		return this.Date_Limite;
 	}
 
-	public void setId(String id) {
+	public void setId(ObjectId id) {
 		this.id = id;
+	}
+
+	public String getId() {
+		return this.id.toString();
 	}
 
 	public void setDate_Limite(String Date_Limite) {
@@ -68,10 +82,6 @@ public class AppelOffre extends BaseEntity {
 
 	public void setFiles(String files) {
 		this.files = files;
-	}
-
-	public String getId() {
-		return this.id;
 	}
 
 	public String getChef_ouvrage() {

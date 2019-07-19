@@ -1,6 +1,6 @@
 package com.pfproject.api.controller;
 
-import com.pfproject.api.converter.ConverterFacade;
+// import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.MessageDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pfproject.api.service.AppelOffreService;
 
 import com.pfproject.api.model.AppelOffre;
-import com.pfproject.api.model.Response;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 
@@ -23,13 +23,14 @@ import java.util.List;
 public class AppeloffreController {
 
 	private final AppelOffreService service;
+	static Logger log = Logger.getLogger(AppeloffreController.class.getName());
 
-	private final ConverterFacade converterFacade;
+	// private final ConverterFacade converterFacade;
 
 	@Autowired
-	public AppeloffreController(final AppelOffreService service, final ConverterFacade converterFacade) {
+	public AppeloffreController(final AppelOffreService service/* , final ConverterFacade converterFacade */) {
 		this.service = service;
-		this.converterFacade = converterFacade;
+		// this.converterFacade = converterFacade;
 	}
 
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
@@ -38,6 +39,7 @@ public class AppeloffreController {
 
 		return new ResponseEntity<>(liste, HttpStatus.OK);
 	}
+
 	@RequestMapping(value = "/findone/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find_one(@PathVariable String id) {
 		AppelOffre saved = service.find(id);
@@ -46,14 +48,14 @@ public class AppeloffreController {
 	}
 
 	@RequestMapping(value = "/changeetat/{id}/{new_etat}", method = RequestMethod.GET)
-	public ResponseEntity<?> Change_etat(@PathVariable String id ,@PathVariable String new_etat) {
-		//Response response = new Response();
-		AppelOffre saved=service.find(id);
+	public ResponseEntity<?> Change_etat(@PathVariable String id, @PathVariable String new_etat) {
+		AppelOffre saved = service.find(id);
+
 		saved.setEtat(new_etat);
-		/*service.Change_Etat(id, new_etat);*/
+
 		service.update(id, saved);
 		final MessageDTO response = new MessageDTO();
-        response.setMessage("Mot de passe est changé avec succes");
+		response.setMessage("blabal");
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 

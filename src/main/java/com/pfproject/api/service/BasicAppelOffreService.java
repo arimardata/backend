@@ -52,15 +52,15 @@ public class BasicAppelOffreService implements AppelOffreService {
 		repository.delete(id);
 		return id;
 	}
-/*
-	@Override
-	public void Change_Etat(final String id,final String New_Etat) {
-		
-		final AppelOffre saved=repository.findOne(id);
-		
-			saved.setEtat(New_Etat);
-			
-			repository.save();
-
-	}*/
+	/*
+	 * @Override public void Change_Etat(final String id,final String New_Etat) {
+	 * 
+	 * final AppelOffre saved=repository.findOne(id);
+	 * 
+	 * saved.setEtat(New_Etat);
+	 * 
+	 * repository.save();
+	 * 
+	 * }
+	 */
 }

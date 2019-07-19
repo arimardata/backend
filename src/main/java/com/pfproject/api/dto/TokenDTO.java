@@ -26,7 +26,7 @@ public class TokenDTO implements Serializable {
         return user;
     }
 
-    public void setUser(final User token) {
+    public void setUser(final User user) {
         this.user = user;
     }
 }

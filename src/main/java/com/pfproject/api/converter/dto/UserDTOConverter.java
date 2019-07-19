@@ -1,12 +1,8 @@
 package com.pfproject.api.converter.dto;
 
 import com.pfproject.api.dto.UserDTO;
-import com.pfproject.api.model.Authority;
 import com.pfproject.api.model.User;
 import org.springframework.core.convert.converter.Converter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserDTOConverter implements Converter<UserDTO, User> {
 

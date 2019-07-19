@@ -11,35 +11,34 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     private final Logger log = LoggerFactory.getLogger(CustomExceptionHandler.class);
 
     @ExceptionHandler(MongoException.class)
-    public ResponseEntity handleMongoException(final MongoException exception) {
+    public ResponseEntity<?> handleMongoException(final MongoException exception) {
         log.warn("Processing mongo exception: {}", exception.getMessage());
 
         return new ResponseEntity<>(exception.getLocalizedMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ServiceException.class)
-    public ResponseEntity handleServiceException(final ServiceException exception) {
+    public ResponseEntity<?> handleServiceException(final ServiceException exception) {
         log.warn("Processing service exception: {}", exception.getMessage());
 
         return new ResponseEntity<>(exception.getLocalizedMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity handleUserNotFoundException(final UserNotFoundException exception) {
+    public ResponseEntity<?> handleUserNotFoundException(final UserNotFoundException exception) {
         log.warn("Processing user not found exception: {}", exception.getMessage());
 
         return new ResponseEntity<>(exception.getLocalizedMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity handleAbstractException(final Exception exception) {
+    public ResponseEntity<?> handleAbstractException(final Exception exception) {
         log.warn("Processing abstract exception: {}", exception.getMessage());
 
         return new ResponseEntity<>(exception.getLocalizedMessage(), HttpStatus.BAD_REQUEST);

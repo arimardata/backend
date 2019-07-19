@@ -1,6 +1,5 @@
 package com.pfproject.api.security.service;
 
-import com.pfproject.api.exception.model.ServiceException;
 import com.pfproject.api.model.User;
 import com.pfproject.api.model.ResponseWithToken;
 import io.jsonwebtoken.JwtBuilder;
