@@ -1,12 +1,11 @@
-package com.pfproject.api.model;
+package com.pfproject.api.dto;
+
+import java.io.Serializable;
 
 import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Cheque")
-public class Cheque extends BaseEntity {
-	private static final long serialVersionUID = 7954325925563724764L;
-	
+public class ChequeDTO implements Serializable {
+	private static final long serialVersionUID = 61901774547107674L;
 	//private ObjectId id;
 	private String Banque;
 	private String Somme;
@@ -15,11 +14,8 @@ public class Cheque extends BaseEntity {
 	private String Recepteur;
 	private String Alerte;
 	private String Date;
-	
-	
-	
-	/*public String getId() {
-		return id.toString();
+	/*public ObjectId getId() {
+		return id;
 	}
 	public void setId(ObjectId id) {
 		this.id = id;
@@ -65,6 +61,9 @@ public class Cheque extends BaseEntity {
 	}
 	public void setDate(String date) {
 		Date = date;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 	

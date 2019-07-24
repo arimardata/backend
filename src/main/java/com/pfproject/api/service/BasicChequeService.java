@@ -2,6 +2,7 @@ package com.pfproject.api.service;
 
 
 import com.pfproject.api.model.Cheque;
+import com.pfproject.api.model.User;
 import com.pfproject.api.repository.ChequeRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,11 @@ public class BasicChequeService implements ChequeService {
 		repository.delete(id);
 		return id;
 	}
+	@Override
+    public Cheque create(final Cheque cheque) {
+        cheque.setCreatedAt(String.valueOf(LocalDateTime.now()));
+        return repository.save(cheque);
+    }
 	/*
 	 * @Override public void Change_Etat(final String id,final String New_Etat) {
 	 * 

@@ -1,7 +1,9 @@
 package com.pfproject.api.converter;
 
 import com.pfproject.api.converter.factory.ConverterFactory;
+import com.pfproject.api.dto.ChequeDTO;
 import com.pfproject.api.dto.UserDTO;
+import com.pfproject.api.model.Cheque;
 import com.pfproject.api.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,5 +17,8 @@ public class ConverterFacade {
     public User convert(final UserDTO dto) {
 
         return (User) converterFactory.getConverter(dto.getClass()).convert(dto);
+    }
+    public Cheque convertCheque(final ChequeDTO dto) {
+    	return (Cheque) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
 }

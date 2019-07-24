@@ -12,5 +12,7 @@ public interface ChequeService {
 
 	String delete(String id);
 
+	Cheque create(Cheque cheque);
+
 	/* void Change_Etat(String id, String etat); */
 }
