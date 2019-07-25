@@ -59,9 +59,10 @@ public class ChequeController {
 		return new ResponseEntity<>(saved, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/changeetat/{id}/{new_etat}", method = RequestMethod.GET)
-	public ResponseEntity<?> Change_etat(@PathVariable String id, @PathVariable String new_etat) {
+	/*@RequestMapping(value = "/modifier/{id}", method = RequestMethod.GET)
+	public ResponseEntity<?> Modifier(@PathVariable String id) {
 		Cheque saved = service.find(id);
+		service.
 
 		saved.setEtat(new_etat);
 
@@ -69,13 +70,17 @@ public class ChequeController {
 		final MessageDTO response = new MessageDTO();
 		response.setMessage("blabal");
 		return new ResponseEntity<>(response, HttpStatus.OK);
-	}
+	}*/
 	@RequestMapping(value = "/ajouter", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody final ChequeDTO dto) {
         Cheque cheque = service.create(converterFacade.convertCheque(dto));
         return new ResponseEntity<>(cheque, HttpStatus.OK);
     }
-	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<?> delete(@PathVariable String id) {
+		String response=service.delete(id);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}	
 	//public ResponseEntity<?> Add_Cheque(String Emetteur,String Recepteur, String Banque)
 
 }
