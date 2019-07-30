@@ -49,10 +49,18 @@ public class BasicChequeService implements ChequeService {
 		repository.save(Cheque);
 		return Cheque;
 	}
+	/*
+	@Override
+	public Cheque Modifier(final String id, final Cheque Cheque) {
+		Cheque.setId(id);
+		
+		return null;
+	}*/
 
 	@Override
 	public String delete(final String id) {
 		repository.delete(id);
+		final Cheque saved = repository.findOne(id);
 		return id;
 	}
 	@Override
@@ -71,4 +79,6 @@ public class BasicChequeService implements ChequeService {
 	 * 
 	 * }
 	 */
+
+	
 }

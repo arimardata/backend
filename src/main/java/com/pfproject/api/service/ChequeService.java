@@ -1,6 +1,7 @@
 package com.pfproject.api.service;
 import java.util.List;
 
+import com.pfproject.api.model.AppelOffre;
 import com.pfproject.api.model.Cheque;
 
 public interface ChequeService {
@@ -13,6 +14,8 @@ public interface ChequeService {
 	String delete(String id);
 
 	Cheque create(Cheque cheque);
+	
+	/*Cheque Modifier(String id, Cheque object);*/
 
 	/* void Change_Etat(String id, String etat); */
 }

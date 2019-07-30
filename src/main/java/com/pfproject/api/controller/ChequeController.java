@@ -59,18 +59,19 @@ public class ChequeController {
 		return new ResponseEntity<>(saved, HttpStatus.OK);
 	}
 
-	/*@RequestMapping(value = "/modifier/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> Modifier(@PathVariable String id) {
+	@RequestMapping(value = "/modifier/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> Modifier(@PathVariable String id,@RequestBody final ChequeDTO dto) {
 		Cheque saved = service.find(id);
-		service.
+		service.update(id, converterFacade.convertCheque(dto));
 
-		saved.setEtat(new_etat);
+		//saved.setEtat(new_etat);
 
-		service.update(id, saved);
+		//service.update(id, saved);
 		final MessageDTO response = new MessageDTO();
 		response.setMessage("blabal");
 		return new ResponseEntity<>(response, HttpStatus.OK);
-	}*/
+	}
+	
 	@RequestMapping(value = "/ajouter", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody final ChequeDTO dto) {
         Cheque cheque = service.create(converterFacade.convertCheque(dto));
