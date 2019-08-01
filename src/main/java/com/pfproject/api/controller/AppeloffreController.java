@@ -16,7 +16,10 @@ import com.pfproject.api.service.AppelOffreService;
 import com.pfproject.api.model.AppelOffre;
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/api/projects")
@@ -55,9 +58,15 @@ public class AppeloffreController {
 
 		service.update(id, saved);
 		final MessageDTO response = new MessageDTO();
-		response.setMessage("blabal");
+		response.setMessage("L'etat de l'appel d'offre est changé avec succes");
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
+
+	// @RequestMapping(value = "/statistics", method = RequestMethod.GET)
+	// public ResponseEntity<?> statistics() {
+	// List<AppelOffre> liste = service.findAll();
+	// return new ResponseEntity<>(response, HttpStatus.OK);
+	// }
 
 	// search route fonctional
 	// @RequestMapping(value = "/find/{username}", method = RequestMethod.GET)
