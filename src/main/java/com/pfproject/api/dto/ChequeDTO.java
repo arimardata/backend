@@ -14,6 +14,9 @@ public class ChequeDTO implements Serializable {
 	private String Recepteur;
 	private String Alerte;
 	private String Date;
+	private String Email;
+	private String Compte;
+	private String Telephone;
 	/*public ObjectId getId() {
 		return id;
 	}
@@ -64,6 +67,24 @@ public class ChequeDTO implements Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public String getTelephone() {
+		return Telephone;
+	}
+	public void setTelephone(String telephone) {
+		Telephone = telephone;
+	}
+	public String getCompte() {
+		return Compte;
+	}
+	public void setCompte(String compte) {
+		Compte = compte;
+	}
+	public String getEmail() {
+		return Email;
+	}
+	public void setEmail(String email) {
+		Email = email;
 	}
 	
 	

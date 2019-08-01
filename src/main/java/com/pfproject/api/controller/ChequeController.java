@@ -61,7 +61,7 @@ public class ChequeController {
 
 	@RequestMapping(value = "/modifier/{id}", method = RequestMethod.POST)
 	public ResponseEntity<?> Modifier(@PathVariable String id,@RequestBody final ChequeDTO dto) {
-		Cheque saved = service.find(id);
+		//Cheque saved = service.find(id);
 		service.update(id, converterFacade.convertCheque(dto));
 
 		//saved.setEtat(new_etat);

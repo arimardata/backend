@@ -15,6 +15,9 @@ public class Cheque extends BaseEntity {
 	private String Recepteur;
 	private String Alerte;
 	private String Date;
+	private String Compte;
+	private String Email;
+	private String Telephone;
 	
 	
 	
@@ -65,6 +68,24 @@ public class Cheque extends BaseEntity {
 	}
 	public void setDate(String date) {
 		Date = date;
+	}
+	public String getCompte() {
+		return Compte;
+	}
+	public void setCompte(String compte) {
+		Compte = compte;
+	}
+	public String getEmail() {
+		return Email;
+	}
+	public void setEmail(String email) {
+		Email = email;
+	}
+	public String getTelephone() {
+		return Telephone;
+	}
+	public void setTelephone(String telephone) {
+		Telephone = telephone;
 	}
 	
 	

@@ -1,7 +1,9 @@
 package com.pfproject.api.converter.factory;
 
+import com.pfproject.api.converter.dto.AoDTOConverter;
 import com.pfproject.api.converter.dto.ChequeDTOConverter;
 import com.pfproject.api.converter.dto.UserDTOConverter;
+import com.pfproject.api.dto.AoDTO;
 import com.pfproject.api.dto.ChequeDTO;
 import com.pfproject.api.dto.UserDTO;
 import org.springframework.core.convert.converter.Converter;
@@ -25,6 +27,7 @@ public class ConverterFactory {
         converters = new HashMap<>();
         converters.put(UserDTO.class, new UserDTOConverter());
         converters.put(ChequeDTO.class, new ChequeDTOConverter());
+        converters.put(AoDTO.class,new AoDTOConverter());
     }
 
     public Converter getConverter(final Object type) {

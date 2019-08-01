@@ -14,6 +14,9 @@ public class ChequeDTOConverter implements Converter<ChequeDTO, Cheque> {
         cheque.setAlerte(dto.getAlerte());
         cheque.setBanque(dto.getBanque());
         
+        cheque.setEmail(dto.getEmail());
+        cheque.setCompte(dto.getCompte());
+        cheque.setTelephone(dto.getTelephone());
         cheque.setDate(dto.getDate());
         cheque.setEmetteur(dto.getEmetteur());
         cheque.setEtat(dto.getEtat());

@@ -21,8 +21,12 @@ public class AppelOffre extends BaseEntity {
 	private String Date_Limite;
 	private String Autres_details;
 	private String etat;
-	private String pdfs;
-	private String files;
+	private String PDFs;
+	private String Files;
+	
+	private String CautionFinal;
+	private String MoinDisant;
+	private String Montant;
 
 	public AppelOffre() {
 
@@ -69,19 +73,19 @@ public class AppelOffre extends BaseEntity {
 	}
 
 	public String getPdfs() {
-		return this.pdfs;
+		return this.PDFs;
 	}
 
 	public void setPdfs(String pdfs) {
-		this.pdfs = pdfs;
+		this.PDFs = pdfs;
 	}
 
 	public String getFiles() {
-		return this.files;
+		return this.Files;
 	}
 
 	public void setFiles(String files) {
-		this.files = files;
+		this.Files = files;
 	}
 
 	public String getChef_ouvrage() {
@@ -138,6 +142,30 @@ public class AppelOffre extends BaseEntity {
 
 	public void setEstimation(String Estimation) {
 		this.Estimation = Estimation;
+	}
+
+	public String getCautionFinal() {
+		return CautionFinal;
+	}
+
+	public void setCautionFinal(String cautionFinal) {
+		CautionFinal = cautionFinal;
+	}
+
+	public String getMoinDisant() {
+		return MoinDisant;
+	}
+
+	public void setMoinDisant(String moinDisant) {
+		MoinDisant = moinDisant;
+	}
+
+	public String getMontant() {
+		return Montant;
+	}
+
+	public void setMontant(String montant) {
+		Montant = montant;
 	}
 
 }
