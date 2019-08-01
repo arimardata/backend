@@ -1,5 +1,8 @@
 package com.pfproject.api.controller;
 
+import com.pfproject.api.converter.ConverterFacade;
+import com.pfproject.api.dto.AoDTO;
+import com.pfproject.api.dto.ChequeDTO;
 // import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.MessageDTO;
 
@@ -7,12 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pfproject.api.service.AppelOffreService;
-
+import com.pfproject.api.service.ChequeService;
 import com.pfproject.api.model.AppelOffre;
 import org.apache.log4j.Logger;
 
@@ -28,12 +32,14 @@ public class AppeloffreController {
 	private final AppelOffreService service;
 	static Logger log = Logger.getLogger(AppeloffreController.class.getName());
 
+
+    private final ConverterFacade converterFacade;
 	// private final ConverterFacade converterFacade;
 
 	@Autowired
-	public AppeloffreController(final AppelOffreService service/* , final ConverterFacade converterFacade */) {
+	public AppeloffreController(final AppelOffreService service , final ConverterFacade converterFacade ) {
 		this.service = service;
-		// this.converterFacade = converterFacade;
+		this.converterFacade = converterFacade;
 	}
 
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
@@ -59,6 +65,15 @@ public class AppeloffreController {
 		service.update(id, saved);
 		final MessageDTO response = new MessageDTO();
 		response.setMessage("L'etat de l'appel d'offre est changé avec succes");
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+	@RequestMapping(value = "/AjouterCaution/{id}/{new_caution}", method = RequestMethod.GET)
+	public ResponseEntity<?> Update(@PathVariable String id, @PathVariable String new_caution) {
+		AppelOffre saved = service.find(id);
+		saved.setCautionFinal(new_caution);
+		service.update(id, saved);
+		final MessageDTO response = new MessageDTO();
+		response.setMessage("caution added");
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
