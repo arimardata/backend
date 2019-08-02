@@ -32,12 +32,11 @@ public class AppeloffreController {
 	private final AppelOffreService service;
 	static Logger log = Logger.getLogger(AppeloffreController.class.getName());
 
-
-    private final ConverterFacade converterFacade;
+	private final ConverterFacade converterFacade;
 	// private final ConverterFacade converterFacade;
 
 	@Autowired
-	public AppeloffreController(final AppelOffreService service , final ConverterFacade converterFacade ) {
+	public AppeloffreController(final AppelOffreService service, final ConverterFacade converterFacade) {
 		this.service = service;
 		this.converterFacade = converterFacade;
 	}
@@ -67,13 +66,27 @@ public class AppeloffreController {
 		response.setMessage("L'etat de l'appel d'offre est changé avec succes");
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
-	@RequestMapping(value = "/AjouterCaution/{id}/{new_caution}", method = RequestMethod.GET)
-	public ResponseEntity<?> Update(@PathVariable String id, @PathVariable String new_caution) {
+
+	@RequestMapping(value = "/AjouterCaution/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> AjouterCautionFinal(@PathVariable String id, @RequestBody final AoDTO dto) {
 		AppelOffre saved = service.find(id);
-		saved.setCautionFinal(new_caution);
+		saved.setCautionFinal(dto.getCautionFinal());
+
 		service.update(id, saved);
 		final MessageDTO response = new MessageDTO();
-		response.setMessage("caution added");
+		response.setMessage("la caution final a été ajouté");
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/moinsDisant/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> AjouterMoinsDisant(@PathVariable String id, @RequestBody final AoDTO dto) {
+		AppelOffre saved = service.find(id);
+		saved.setMoinDisant(dto.getMoinDisant());
+		saved.setMontant(dto.getMontant());
+
+		service.update(id, saved);
+		final MessageDTO response = new MessageDTO();
+		response.setMessage("le moins disant avec le montant ont été ajouté");
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
