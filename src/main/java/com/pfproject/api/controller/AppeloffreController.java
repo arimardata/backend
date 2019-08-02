@@ -81,8 +81,11 @@ public class AppeloffreController {
 	@RequestMapping(value = "/moinsDisant/{id}", method = RequestMethod.POST)
 	public ResponseEntity<?> AjouterMoinsDisant(@PathVariable String id, @RequestBody final AoDTO dto) {
 		AppelOffre saved = service.find(id);
-		saved.setMoinDisant(dto.getMoinDisant());
+		saved.setMoinsDisant(dto.getMoinsDisant());
 		saved.setMontant(dto.getMontant());
+
+		log.info("moins disant : " + dto.getMoinsDisant());
+		log.info("montant : " + dto.getMontant());
 
 		service.update(id, saved);
 		final MessageDTO response = new MessageDTO();
