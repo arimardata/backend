@@ -20,13 +20,12 @@ import com.pfproject.api.service.ChequeService;
 import com.pfproject.api.model.AppelOffre;
 import org.apache.log4j.Logger;
 
-<<<<<<< HEAD
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-=======
 import java.util.ArrayList;
->>>>>>> 0753db80a4b0c42048b5629af0c3b1cf51069945
+
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;

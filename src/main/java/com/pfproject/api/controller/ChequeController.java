@@ -82,6 +82,8 @@ public class ChequeController {
 		String response=service.delete(id);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}	
+
+	
 	//public ResponseEntity<?> Add_Cheque(String Emetteur,String Recepteur, String Banque)
 
 }
