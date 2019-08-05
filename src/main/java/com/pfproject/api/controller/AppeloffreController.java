@@ -20,10 +20,16 @@ import com.pfproject.api.service.ChequeService;
 import com.pfproject.api.model.AppelOffre;
 import org.apache.log4j.Logger;
 
+<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+=======
+import java.util.ArrayList;
+>>>>>>> 0753db80a4b0c42048b5629af0c3b1cf51069945
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/api/projects")
@@ -32,12 +38,11 @@ public class AppeloffreController {
 	private final AppelOffreService service;
 	static Logger log = Logger.getLogger(AppeloffreController.class.getName());
 
-
-    private final ConverterFacade converterFacade;
+	private final ConverterFacade converterFacade;
 	// private final ConverterFacade converterFacade;
 
 	@Autowired
-	public AppeloffreController(final AppelOffreService service , final ConverterFacade converterFacade ) {
+	public AppeloffreController(final AppelOffreService service, final ConverterFacade converterFacade) {
 		this.service = service;
 		this.converterFacade = converterFacade;
 	}
@@ -64,16 +69,18 @@ public class AppeloffreController {
 
 		service.update(id, saved);
 		final MessageDTO response = new MessageDTO();
-		response.setMessage("blabal");
+		response.setMessage("L'etat de l'appel d'offre est changé avec succes");
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
-	@RequestMapping(value = "/AjouterCaution/{id}/{new_caution}", method = RequestMethod.GET)
-	public ResponseEntity<?> Update(@PathVariable String id, @PathVariable String new_caution) {
+
+	@RequestMapping(value = "/AjouterCaution/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> AjouterCautionFinal(@PathVariable String id, @RequestBody final AoDTO dto) {
 		AppelOffre saved = service.find(id);
-		saved.setCautionFinal(new_caution);
+		saved.setCautionFinal(dto.getCautionFinal());
+
 		service.update(id, saved);
 		final MessageDTO response = new MessageDTO();
-		response.setMessage("caution added");
+		response.setMessage("la caution final a été ajouté");
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	@RequestMapping(value="/runscript", method=RequestMethod.GET)
@@ -92,6 +99,27 @@ public class AppeloffreController {
 			System.out.println("Script not run successfully");
 		}
 	}
+
+	@RequestMapping(value = "/moinsDisant/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> AjouterMoinsDisant(@PathVariable String id, @RequestBody final AoDTO dto) {
+		AppelOffre saved = service.find(id);
+		saved.setMoinsDisant(dto.getMoinsDisant());
+		saved.setMontant(dto.getMontant());
+
+		log.info("moins disant : " + dto.getMoinsDisant());
+		log.info("montant : " + dto.getMontant());
+
+		service.update(id, saved);
+		final MessageDTO response = new MessageDTO();
+		response.setMessage("le moins disant avec le montant ont été ajouté");
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	// @RequestMapping(value = "/statistics", method = RequestMethod.GET)
+	// public ResponseEntity<?> statistics() {
+	// List<AppelOffre> liste = service.findAll();
+	// return new ResponseEntity<>(response, HttpStatus.OK);
+	// }
 
 	// search route fonctional
 	// @RequestMapping(value = "/find/{username}", method = RequestMethod.GET)

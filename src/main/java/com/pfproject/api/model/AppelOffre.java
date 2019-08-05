@@ -23,10 +23,10 @@ public class AppelOffre extends BaseEntity {
 	private String etat;
 	private String PDFs;
 	private String Files;
-	
-	private String CautionFinal;
-	private String MoinDisant;
-	private String Montant;
+
+	private String cautionFinal;
+	private String moinsDisant;
+	private String montant;
 
 	public AppelOffre() {
 
@@ -145,27 +145,27 @@ public class AppelOffre extends BaseEntity {
 	}
 
 	public String getCautionFinal() {
-		return CautionFinal;
+		return cautionFinal;
 	}
 
 	public void setCautionFinal(String cautionFinal) {
-		CautionFinal = cautionFinal;
+		this.cautionFinal = cautionFinal;
 	}
 
-	public String getMoinDisant() {
-		return MoinDisant;
+	public String getMoinsDisant() {
+		return this.moinsDisant;
 	}
 
-	public void setMoinDisant(String moinDisant) {
-		MoinDisant = moinDisant;
+	public void setMoinsDisant(String moinsDisant) {
+		this.moinsDisant = moinsDisant;
 	}
 
 	public String getMontant() {
-		return Montant;
+		return montant;
 	}
 
 	public void setMontant(String montant) {
-		Montant = montant;
+		this.montant = montant;
 	}
 
 }
