@@ -20,7 +20,6 @@ import com.pfproject.api.service.ChequeService;
 import com.pfproject.api.model.AppelOffre;
 import org.apache.log4j.Logger;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -82,15 +81,19 @@ public class AppeloffreController {
 		response.setMessage("la caution final a été ajouté");
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
-	@RequestMapping(value="/runscript", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/runscript", method = RequestMethod.GET)
 	public void RunScript() {
 		try {
 			System.out.println("Running Script");
-		//String command ="cmd.exe /c start python C:/Users/Jarvis/Desktop/Scrapping_Module/Scrapping_final/ScrapV2.py";
-		//Process pr =Runtime.getRuntime().exec(command);
-			//Runtime.getRuntime().exec("cmd /c start cmd.exe /K python C:\\Users\\Jarvis\\Desktop\\Scrapping_Module\\Scrapping_final\\ScrapV2.py");
-			Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd C:\\Users\\Jarvis\\Desktop\\Scrapping_Module\\Scrapping_final && python ScrapV2.py\"");
-			
+			// String command ="cmd.exe /c start python
+			// C:/Users/Jarvis/Desktop/Scrapping_Module/Scrapping_final/ScrapV2.py";
+			// Process pr =Runtime.getRuntime().exec(command);
+			// Runtime.getRuntime().exec("cmd /c start cmd.exe /K python
+			// C:\\Users\\Jarvis\\Desktop\\Scrapping_Module\\Scrapping_final\\ScrapV2.py");
+			Runtime.getRuntime().exec(
+					"cmd /c start cmd.exe /K \"cd C:\\Users\\Jarvis\\Desktop\\Scrapping_Module\\Scrapping_final && python ScrapV2.py\"");
+
 			System.out.println("Script run successfully");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
