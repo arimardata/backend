@@ -10,6 +10,8 @@ import com.pfproject.api.dto.UserDTO;
 import com.pfproject.api.model.Cheque;
 import com.pfproject.api.model.Response;
 import com.pfproject.api.model.User;
+import com.pfproject.api.scheduled.Mailer;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,9 +37,9 @@ public class ChequeController {
 
 	private final ChequeService service;
 
-	static Logger log = Logger.getLogger(ChequeController.class.getName());
+
     private final ConverterFacade converterFacade;
-	// private final ConverterFacade converterFacade;
+
 
 	@Autowired
 	public ChequeController(final ChequeService service , final ConverterFacade converterFacade ) {
@@ -74,6 +76,7 @@ public class ChequeController {
 	
 	@RequestMapping(value = "/ajouter", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody final ChequeDTO dto) {
+		dto.setSent("no");
         Cheque cheque = service.create(converterFacade.convertCheque(dto));
         return new ResponseEntity<>(cheque, HttpStatus.OK);
     }
@@ -82,8 +85,12 @@ public class ChequeController {
 		String response=service.delete(id);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}	
+	@RequestMapping(value = "/send", method = RequestMethod.GET)
+	public ResponseEntity<?> Send() {
+		Mailer.send("clientinfo.arimar@gmail.com", "GECO2018Y", "clientinfo.arimar@gmail.com", "hello", "test");
+		return new ResponseEntity<>(null, HttpStatus.OK);
+	}	
 
-	
 	//public ResponseEntity<?> Add_Cheque(String Emetteur,String Recepteur, String Banque)
 
 }

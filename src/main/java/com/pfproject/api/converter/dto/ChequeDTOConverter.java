@@ -23,7 +23,7 @@ public class ChequeDTOConverter implements Converter<ChequeDTO, Cheque> {
         //cheque.setId(dto.get);
         cheque.setRecepteur(dto.getRecepteur());
         cheque.setSomme(dto.getSomme());
-        
+        cheque.setSent(dto.getSent());
         
      
 

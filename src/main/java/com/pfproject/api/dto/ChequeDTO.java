@@ -17,6 +17,7 @@ public class ChequeDTO implements Serializable {
 	private String Email;
 	private String Compte;
 	private String Telephone;
+	private String Sent;
 	/*public ObjectId getId() {
 		return id;
 	}
@@ -85,6 +86,12 @@ public class ChequeDTO implements Serializable {
 	}
 	public void setEmail(String email) {
 		Email = email;
+	}
+	public String getSent() {
+		return Sent;
+	}
+	public void setSent(String sent) {
+		Sent = sent;
 	}
 	
 	

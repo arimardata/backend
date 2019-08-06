@@ -18,6 +18,7 @@ public class Cheque extends BaseEntity {
 	private String Compte;
 	private String Email;
 	private String Telephone;
+	private String Sent;
 	
 	
 	
@@ -86,6 +87,12 @@ public class Cheque extends BaseEntity {
 	}
 	public void setTelephone(String telephone) {
 		Telephone = telephone;
+	}
+	public String getSent() {
+		return Sent;
+	}
+	public void setSent(String sent) {
+		Sent = sent;
 	}
 	
 	
