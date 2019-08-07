@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Affectation_consomable")
 public class Affectation_consomable implements Serializable {
 
-    private static final long serialVersionUID = 7954425825563724764L;
+    private static final long serialVersionUID = 1954425825563724764L;
 
     private ObjectId id;
     private String id_projet;

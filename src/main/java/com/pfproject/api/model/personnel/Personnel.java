@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Personnel")
 public class Personnel implements Serializable {
 
-    private static final long serialVersionUID = 7954425925563724764L;
+    private static final long serialVersionUID = 7954425225563724764L;
 
     private String cin;
     private String nom;
@@ -18,15 +18,6 @@ public class Personnel implements Serializable {
     private String email;
     private String diplome;
     private String qualite;
-    private ObjectId id;
-
-    public ObjectId getId() {
-        return this.id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
 
     public Personnel() {
 

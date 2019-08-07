@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Non_consomable")
 public class Non_consomable extends Materiel implements Serializable {
 
-    private static final long serialVersionUID = 7954425825563724764L;
+    private static final long serialVersionUID = 8954425825563724764L;
 
     private ObjectId id;
     private String cout_par_heure;

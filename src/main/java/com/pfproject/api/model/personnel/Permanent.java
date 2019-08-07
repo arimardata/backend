@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Permanent")
 public class Permanent extends Personnel implements Serializable {
 
-    private static final long serialVersionUID = 7954425925563724764L;
+    private static final long serialVersionUID = 7954425935563724764L;
 
     private String salaire;
     private String cnss;

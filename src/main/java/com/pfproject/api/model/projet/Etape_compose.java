@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Etape_compose")
 public class Etape_compose implements Serializable {
 
-    private static final long serialVersionUID = 7954425825563724764L;
+    private static final long serialVersionUID = 7954425825562724764L;
 
     private String id_etape;
     private String id_projet;

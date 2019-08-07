@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Saisonier")
 public class Saisonier extends Personnel implements Serializable {
 
-    private static final long serialVersionUID = 7954425925563724764L;
+    private static final long serialVersionUID = 7994425925563724764L;
 
     private String cout_par_jour;
 

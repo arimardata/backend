@@ -8,13 +8,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Projet")
 public class Projet implements Serializable {
 
-    private static final long serialVersionUID = 7954425825563724764L;
+    private static final long serialVersionUID = 7954425825563724767L;
 
     private String date_debut;
     private String date_fin;
     private String cout_total;
-
-    private ObjectId id;
 
     public String getDate_debut() {
         return this.date_debut;
@@ -38,14 +36,6 @@ public class Projet implements Serializable {
 
     public void setCout_total(String cout_total) {
         this.cout_total = cout_total;
-    }
-
-    public ObjectId getId() {
-        return this.id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
     public Projet() {
