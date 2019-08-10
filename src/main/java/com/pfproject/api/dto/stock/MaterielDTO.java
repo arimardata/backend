@@ -6,27 +6,24 @@ import org.bson.types.ObjectId;
 
 public class MaterielDTO implements Serializable {
 	private static final long serialVersionUID = 61901974548107674L;
-	//private ObjectId id;
-	private String Quantite;
 
-	/*public ObjectId getId() {
-		return id;
-	}
-	public void setId(ObjectId id) {
-		this.id = id;
-	}*/
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	private String quantite;
+	private String id_mat;
 
 	public String getQuantite() {
-		return Quantite;
+		return this.quantite;
 	}
 
 	public void setQuantite(String quantite) {
-		Quantite = quantite;
+		this.quantite = quantite;
 	}
 
-	
+	public String getId_mat() {
+		return this.id_mat;
+	}
+
+	public void setId_mat(String id_mat) {
+		this.id_mat = id_mat;
+	}
+
 }

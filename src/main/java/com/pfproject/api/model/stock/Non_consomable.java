@@ -14,9 +14,27 @@ public class Non_consomable extends Materiel implements Serializable {
     private String cout_par_heure;
     private String prix_achat;
     private String date_achat;
+    private String createdAt;
+    private String updatedAt;
 
-    public ObjectId getId() {
-        return this.id;
+    public String getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getId() {
+        return this.id.toString();
     }
 
     public void setId(ObjectId id) {

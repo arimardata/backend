@@ -5,52 +5,35 @@ import java.io.Serializable;
 
 import org.bson.types.ObjectId;
 
-public class NonConsomableDTO extends MaterielDTO implements Serializable  {
+public class NonConsomableDTO extends MaterielDTO implements Serializable {
 	private static final long serialVersionUID = 62901974548107674L;
-	//private ObjectId id;
 
-	/*public ObjectId getId() {
-		return id;
-	}
-	public void setId(ObjectId id) {
-		this.id = id;
-	}*/
-	private String CoutParHeure;
-	private String PrixAchat;
-	private String DateAchat;
+	private String cout_par_heure;
+	private String prix_achat;
+	private String date_achat;
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-		
+	public String getCout_par_heure() {
+		return this.cout_par_heure;
 	}
 
-	public String getCoutParHeure() {
-		return CoutParHeure;
+	public void setCout_par_heure(String cout_par_heure) {
+		this.cout_par_heure = cout_par_heure;
 	}
 
-	public void setCoutParHeure(String coutParHeure) {
-		CoutParHeure = coutParHeure;
+	public String getPrix_achat() {
+		return this.prix_achat;
 	}
 
-	public String getPrixAchat() {
-		return PrixAchat;
+	public void setPrix_achat(String prix_achat) {
+		this.prix_achat = prix_achat;
 	}
 
-	public void setPrixAchat(String prixAchat) {
-		PrixAchat = prixAchat;
+	public String getDate_achat() {
+		return this.date_achat;
 	}
 
-	public String getDateAchat() {
-		return DateAchat;
+	public void setDate_achat(String date_achat) {
+		this.date_achat = date_achat;
 	}
 
-	public void setDateAchat(String dateAchat) {
-		DateAchat = dateAchat;
-	}
-
-
-
-
-
-	
 }

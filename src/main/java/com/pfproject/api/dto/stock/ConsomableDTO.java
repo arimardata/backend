@@ -5,37 +5,17 @@ import java.io.Serializable;
 
 import org.bson.types.ObjectId;
 
-public class ConsomableDTO extends MaterielDTO implements Serializable  {
+public class ConsomableDTO extends MaterielDTO implements Serializable {
 	private static final long serialVersionUID = 62301974548107674L;
-	//private ObjectId id;
 
-	/*public ObjectId getId() {
-		return id;
-	}
-	public void setId(ObjectId id) {
-		this.id = id;
-	}*/
-	private String PrixUnite;
+	private String prix_unite;
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-		
+	public String getPrix_unite() {
+		return this.prix_unite;
 	}
 
-	public String getPrixUnite() {
-		return PrixUnite;
+	public void setPrix_unite(String prix_unite) {
+		this.prix_unite = prix_unite;
 	}
 
-	public void setPrixUnite(String prixUnite) {
-		PrixUnite = prixUnite;
-	}
-
-	
-
-
-
-
-
-
-	
 }
