@@ -6,7 +6,7 @@ import org.bson.types.ObjectId;
 
 public class PersonnelDTO implements Serializable {
 	private static final long serialVersionUID = 61901974548107674L;
-	//private ObjectId id;
+
 	private String CIN;
 	private String Nom;
 	private String Prenom;
@@ -15,13 +15,6 @@ public class PersonnelDTO implements Serializable {
 	private String Email;
 	private String Diplome;
 	private String Qualite;
-
-	/*public ObjectId getId() {
-		return id;
-	}
-	public void setId(ObjectId id) {
-		this.id = id;
-	}*/
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -91,7 +84,4 @@ public class PersonnelDTO implements Serializable {
 		Qualite = qualite;
 	}
 
-	
-
-	
 }
