@@ -1,10 +1,6 @@
 package com.pfproject.api.controller.Personnel;
 
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.MessageDTO;
-import com.pfproject.api.dto.personnel.SaisonierDTO;
-import com.pfproject.api.model.personnel.Saisonier;
-import com.pfproject.api.service.Personnel.SaisonierService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,52 +11,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pfproject.api.service.Personnel.AdministratifService;
+import com.pfproject.api.dto.MessageDTO;
+import com.pfproject.api.dto.personnel.AdministratifDTO;
+import com.pfproject.api.model.personnel.Administratif;
+
 import org.apache.log4j.Logger;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/personnel/saisonier")
-public class SaisonierController {
+@RequestMapping(value = "/api/personnel/administratif")
+public class AdministratifController {
 
-    private final SaisonierService service;
-    static Logger log = Logger.getLogger(SaisonierController.class.getName());
+    private final AdministratifService service;
+    static Logger log = Logger.getLogger(PermanentController.class.getName());
 
     private final ConverterFacade converterFacade;
 
     @Autowired
-    public SaisonierController(final SaisonierService service, final ConverterFacade converterFacade) {
+    public AdministratifController(final AdministratifService service, final ConverterFacade converterFacade) {
         this.service = service;
         this.converterFacade = converterFacade;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody final SaisonierDTO dto) {
-        Saisonier saisonier = service.create(converterFacade.convertSaisonier(dto));
+    public ResponseEntity<?> create(@RequestBody final AdministratifDTO dto) {
+        Administratif administratif = service.create(converterFacade.convertAdministratif(dto));
 
-        return new ResponseEntity<>(saisonier, HttpStatus.OK);
+        return new ResponseEntity<>(administratif, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
-        List<Saisonier> liste = service.findAll();
+        List<Administratif> liste = service.findAll();
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/findone/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find_one(@PathVariable String id) {
-        Saisonier saved = service.find(id);
+        Administratif saved = service.find(id);
 
         return new ResponseEntity<>(saved, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public ResponseEntity<?> Modifier(@PathVariable String id, @RequestBody final SaisonierDTO dto) {
+    public ResponseEntity<?> Modifier(@PathVariable String id, @RequestBody final AdministratifDTO dto) {
 
-        Saisonier saisonier = service.update(id, converterFacade.convertSaisonier(dto));
+        Administratif administratif = service.update(id, converterFacade.convertAdministratif(dto));
 
-        return new ResponseEntity<>(saisonier, HttpStatus.OK);
+        return new ResponseEntity<>(administratif, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)

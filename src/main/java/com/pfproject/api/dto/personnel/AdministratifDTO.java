@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.bson.types.ObjectId;
 
-public class Administratif extends PersonnelDTO implements Serializable {
+public class AdministratifDTO extends PersonnelDTO implements Serializable {
 	private static final long serialVersionUID = 61901974548157674L;
 	private ObjectId id;
 	private String Salaire;

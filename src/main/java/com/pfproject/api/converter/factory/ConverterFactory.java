@@ -1,15 +1,9 @@
 package com.pfproject.api.converter.factory;
 
-import com.pfproject.api.converter.dto.AoDTOConverter;
-import com.pfproject.api.converter.dto.ChequeDTOConverter;
-import com.pfproject.api.converter.dto.UserDTOConverter;
-import com.pfproject.api.converter.dto.ConsomableDTOConverter;
-import com.pfproject.api.converter.dto.NonConsomableDTOConverter;
-import com.pfproject.api.dto.AoDTO;
-import com.pfproject.api.dto.ChequeDTO;
-import com.pfproject.api.dto.UserDTO;
-import com.pfproject.api.dto.stock.ConsomableDTO;
-import com.pfproject.api.dto.stock.NonConsomableDTO;
+import com.pfproject.api.converter.dto.*;
+import com.pfproject.api.dto.*;
+import com.pfproject.api.dto.personnel.*;
+import com.pfproject.api.dto.stock.*;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -34,6 +28,9 @@ public class ConverterFactory {
         converters.put(AoDTO.class, new AoDTOConverter());
         converters.put(ConsomableDTO.class, new ConsomableDTOConverter());
         converters.put(NonConsomableDTO.class, new NonConsomableDTOConverter());
+        converters.put(AdministratifDTO.class, new AdministratifDTOConverter());
+        converters.put(PermanentDTO.class, new PermanentDTOConverter());
+        converters.put(SaisonierDTO.class, new SaisonierDTOConverter());
     }
 
     public Converter getConverter(final Object type) {

@@ -13,8 +13,26 @@ public class Administratif extends Personnel implements Serializable {
     private String salaire;
     private String cnss;
     private String date_embauche;
+    private String createdAt;
+    private String updatedAt;
 
     private ObjectId id;
+
+    public String getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     public String getSalaire() {
         return this.salaire;

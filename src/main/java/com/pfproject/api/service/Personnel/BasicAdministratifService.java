@@ -43,6 +43,7 @@ public class BasicAdministratifService implements AdministratifService {
         if (saved != null) {
             administratif.setCreatedAt(saved.getCreatedAt());
             administratif.setUpdatedAt(String.valueOf(LocalDateTime.now()));
+
         } else {
             administratif.setCreatedAt(String.valueOf(LocalDateTime.now()));
         }
@@ -59,7 +60,6 @@ public class BasicAdministratifService implements AdministratifService {
     @Override
     public String delete(final String id) {
         repository.delete(id);
-        final Administratif saved = repository.findOne(id);
         return id;
     }
 

@@ -16,6 +16,25 @@ public class Permanent extends Personnel implements Serializable {
 
     private ObjectId id;
 
+    private String createdAt;
+    private String updatedAt;
+
+    public String getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public Permanent() {
 
     }
