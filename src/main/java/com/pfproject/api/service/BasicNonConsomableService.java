@@ -53,7 +53,6 @@ public class BasicNonConsomableService implements NonConsomableService {
     @Override
     public String delete(final String id) {
         repository.delete(id);
-        final Non_consomable saved = repository.findOne(id);
         return id;
     }
 

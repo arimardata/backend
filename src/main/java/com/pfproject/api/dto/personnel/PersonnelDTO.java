@@ -2,8 +2,6 @@ package com.pfproject.api.dto.personnel;
 
 import java.io.Serializable;
 
-import org.bson.types.ObjectId;
-
 public class PersonnelDTO implements Serializable {
 	private static final long serialVersionUID = 61901974548107674L;
 

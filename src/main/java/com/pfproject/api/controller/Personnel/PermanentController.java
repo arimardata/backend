@@ -1,7 +1,6 @@
 package com.pfproject.api.controller.Personnel;
 
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.stock.ConsomableDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -59,7 +59,6 @@ public class BasicConsomableService implements ConsomableService {
     @Override
     public String delete(final String id) {
         repository.delete(id);
-        final Consomable saved = repository.findOne(id);
         return id;
     }
 

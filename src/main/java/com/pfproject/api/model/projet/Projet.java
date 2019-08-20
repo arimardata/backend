@@ -2,7 +2,6 @@ package com.pfproject.api.model.projet;
 
 import java.io.Serializable;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Projet")
