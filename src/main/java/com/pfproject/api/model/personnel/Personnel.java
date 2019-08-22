@@ -12,15 +12,11 @@ public class Personnel implements Serializable {
     private String cin;
     private String nom;
     private String prenom;
-    private String date_naissance;
+    private String dateDeNaissance;
     private String tel;
     private String email;
     private String diplome;
     private String qualite;
-
-    public Personnel() {
-
-    }
 
     public String getCin() {
         return this.cin;
@@ -46,12 +42,12 @@ public class Personnel implements Serializable {
         this.prenom = prenom;
     }
 
-    public String getDate_naissance() {
-        return this.date_naissance;
+    public String getDateDeNaissance() {
+        return this.dateDeNaissance;
     }
 
-    public void setDate_naissance(String date_naissance) {
-        this.date_naissance = date_naissance;
+    public void setDateDeNaissance(String dateDeNaissance) {
+        this.dateDeNaissance = dateDeNaissance;
     }
 
     public String getTel() {
@@ -84,6 +80,10 @@ public class Personnel implements Serializable {
 
     public void setQualite(String qualite) {
         this.qualite = qualite;
+    }
+
+    public Personnel() {
+
     }
 
 }

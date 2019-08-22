@@ -9,10 +9,10 @@ public class AdministratifDTOConverter implements Converter<AdministratifDTO, Ad
     @Override
     public Administratif convert(final AdministratifDTO dto) {
         final Administratif administratif = new Administratif();
-        administratif.setCin(dto.getCIN());
-        administratif.setCnss(dto.getCNSS());
-        administratif.setDate_embauche(dto.getDateEmbauche());
-        administratif.setDate_naissance(dto.getDateDeNaissance());
+        administratif.setCin(dto.getCin());
+        administratif.setCnss(dto.getCnss());
+        administratif.setDateEmbauche(dto.getDateEmbauche());
+        administratif.setDateDeNaissance(dto.getDateDeNaissance());
         administratif.setDiplome(dto.getDiplome());
         administratif.setEmail(dto.getEmail());
         administratif.setNom(dto.getNom());

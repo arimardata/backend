@@ -49,8 +49,8 @@ public class Contrat implements Serializable {
 
     private ObjectId id;
 
-    public ObjectId getId() {
-        return this.id;
+    public String getId() {
+        return this.id.toString();
     }
 
     public void setId(ObjectId id) {

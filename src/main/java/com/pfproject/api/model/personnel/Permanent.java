@@ -12,12 +12,44 @@ public class Permanent extends Personnel implements Serializable {
 
     private String salaire;
     private String cnss;
-    private String date_embauche;
+    private String dateEmbauche;
 
     private ObjectId id;
 
     private String createdAt;
     private String updatedAt;
+
+    public String getSalaire() {
+        return this.salaire;
+    }
+
+    public void setSalaire(String salaire) {
+        this.salaire = salaire;
+    }
+
+    public String getCnss() {
+        return this.cnss;
+    }
+
+    public void setCnss(String cnss) {
+        this.cnss = cnss;
+    }
+
+    public String getDateEmbauche() {
+        return this.dateEmbauche;
+    }
+
+    public void setDateEmbauche(String dateEmbauche) {
+        this.dateEmbauche = dateEmbauche;
+    }
+
+    public String getId() {
+        return this.id.toString();
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
 
     public String getCreatedAt() {
         return this.createdAt;
@@ -37,38 +69,6 @@ public class Permanent extends Personnel implements Serializable {
 
     public Permanent() {
 
-    }
-
-    public String getSalaire() {
-        return this.salaire;
-    }
-
-    public void setSalaire(String salaire) {
-        this.salaire = salaire;
-    }
-
-    public String getCnss() {
-        return this.cnss;
-    }
-
-    public void setCnss(String cnss) {
-        this.cnss = cnss;
-    }
-
-    public String getDate_embauche() {
-        return this.date_embauche;
-    }
-
-    public void setDate_embauche(String date_embauche) {
-        this.date_embauche = date_embauche;
-    }
-
-    public ObjectId getId() {
-        return this.id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
 }

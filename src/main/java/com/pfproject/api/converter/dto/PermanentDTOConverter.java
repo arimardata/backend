@@ -9,10 +9,10 @@ public class PermanentDTOConverter implements Converter<PermanentDTO, Permanent>
     @Override
     public Permanent convert(final PermanentDTO dto) {
         final Permanent permanent = new Permanent();
-        permanent.setCin(dto.getCIN());
-        permanent.setCnss(dto.getCNSS());
-        permanent.setDate_embauche(dto.getDateEmbauche());
-        permanent.setDate_naissance(dto.getDateDeNaissance());
+        permanent.setCin(dto.getCin());
+        permanent.setCnss(dto.getCnss());
+        permanent.setDateEmbauche(dto.getDateEmbauche());
+        permanent.setDateDeNaissance(dto.getDateDeNaissance());
         permanent.setDiplome(dto.getDiplome());
         permanent.setEmail(dto.getEmail());
         permanent.setNom(dto.getNom());
