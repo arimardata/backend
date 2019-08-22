@@ -17,14 +17,7 @@ import com.pfproject.api.service.NonConsomableService;
 import com.pfproject.api.model.stock.Non_consomable;
 import org.apache.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/api/stock/nonconsomable")
@@ -40,13 +33,13 @@ public class NonConsomableController {
         this.service = service;
         this.converterFacade = converterFacade;
     }
-/*
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody final NonConsomableDTO dto) {
         Non_consomable non_consomable = service.create(converterFacade.convertNonConsomable(dto));
 
         return new ResponseEntity<>(non_consomable, HttpStatus.OK);
-    }*/
+    }
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
@@ -61,7 +54,7 @@ public class NonConsomableController {
 
         return new ResponseEntity<>(saved, HttpStatus.OK);
     }
-/*
+
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public ResponseEntity<?> Modifier(@PathVariable String id, @RequestBody final NonConsomableDTO dto) {
 
@@ -69,7 +62,7 @@ public class NonConsomableController {
 
         return new ResponseEntity<>(non_consomable, HttpStatus.OK);
     }
-*/
+
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable String id) {
         service.delete(id);

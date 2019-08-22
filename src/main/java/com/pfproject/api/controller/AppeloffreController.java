@@ -1,8 +1,6 @@
 package com.pfproject.api.controller;
 
-import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.AoDTO;
-import com.pfproject.api.dto.ChequeDTO;
 // import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.MessageDTO;
 
@@ -16,18 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pfproject.api.service.AppelOffreService;
-import com.pfproject.api.service.ChequeService;
 import com.pfproject.api.model.AppelOffre;
 import org.apache.log4j.Logger;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/api/projects")
@@ -36,13 +28,9 @@ public class AppeloffreController {
 	private final AppelOffreService service;
 	static Logger log = Logger.getLogger(AppeloffreController.class.getName());
 
-	private final ConverterFacade converterFacade;
-	// private final ConverterFacade converterFacade;
-
 	@Autowired
-	public AppeloffreController(final AppelOffreService service, final ConverterFacade converterFacade) {
+	public AppeloffreController(final AppelOffreService service) {
 		this.service = service;
-		this.converterFacade = converterFacade;
 	}
 
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
