@@ -40,13 +40,13 @@ public class ConsomableController {
 		this.service = service;
 		this.converterFacade = converterFacade;
 	}
-
+	/*
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ResponseEntity<?> create(@RequestBody final ConsomableDTO dto) {
 		Consomable consomable = service.create(converterFacade.convertConsomable(dto));
 
 		return new ResponseEntity<>(consomable, HttpStatus.OK);
-	}
+	}*/
 
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
 	public ResponseEntity<?> find() {
@@ -61,7 +61,7 @@ public class ConsomableController {
 
 		return new ResponseEntity<>(saved, HttpStatus.OK);
 	}
-
+	/*
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
 	public ResponseEntity<?> Modifier(@PathVariable String id, @RequestBody final ConsomableDTO dto) {
 
@@ -69,7 +69,7 @@ public class ConsomableController {
 
 		return new ResponseEntity<>(consomable, HttpStatus.OK);
 	}
-
+*/
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> delete(@PathVariable String id) {
 		service.delete(id);

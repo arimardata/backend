@@ -93,7 +93,6 @@ public class AppeloffreController {
 			// C:\\Users\\Jarvis\\Desktop\\Scrapping_Module\\Scrapping_final\\ScrapV2.py");
 			Runtime.getRuntime().exec(
 					"cmd /c start cmd.exe /K \"cd C:\\Users\\Jarvis\\Desktop\\Scrapping_Module\\Scrapping_final && python ScrapV2.py\"");
-
 			System.out.println("Script run successfully");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

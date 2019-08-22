@@ -29,6 +29,10 @@ public class ConverterFacade {
         return (AppelOffre) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
 
+    public Notification convertNotification(final NotificationDTO dto) {
+        return (Notification) converterFactory.getConverter(dto.getClass()).convert(dto);
+    }
+
     public Consomable convertConsomable(final ConsomableDTO dto) {
         return (Consomable) converterFactory.getConverter(dto.getClass()).convert(dto);
     }

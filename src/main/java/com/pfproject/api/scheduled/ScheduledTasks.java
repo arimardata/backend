@@ -1,7 +1,5 @@
 package com.pfproject.api.scheduled;
 
-
-
 import java.text.ParseException;
 
 // /*
@@ -19,7 +17,6 @@ import java.text.ParseException;
 // * See the License for the specific language governing permissions and
 // * limitations under the License.
 // */
-
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -95,29 +92,145 @@ public class ScheduledTasks {
 			Object id = D.get("_id");
 			Object Sent = D.get("Sent");
 			Object Alerte = D.get("Alerte");
-			Object from=D.get("Emetteur");
-			Object to=D.get("Recepteur");
+			Object from = D.get("Emetteur");
+			Object to = D.get("Recepteur");
 
 			Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(Date);
 
 			System.out.println((date1.getTime() - current.getTime()));
-			System.out.println("id"+id+"Alerte------------->"+Long.parseLong(Alerte.toString())*86400000);
-			System.out.println("Margine:  "+(date1.getTime() - current.getTime()));
-			System.out.println("Alerte:  "+(Long.parseLong(Alerte.toString())*86400000));
-			System.out.println("Sent:  "+Sent);
-			if (((date1.getTime() - current.getTime()) <= (Long.parseLong(Alerte.toString())*86400000)) && (Sent.toString().equalsIgnoreCase("no") )) {
-				 System.out.println("sending mail");
-				 Mailer.send("clientinfo.arimar@gmail.com", "GECO2018Y", "clientinfo.arimar@gmail.com", "Alerte Cheque!", "Vous avez un cheque dû aujourd'hui de: "+from.toString()+" à: "+to.toString());
-				 System.out.println("try");
-				 System.out.println(D.get("_id")+"=========="+D.get("Sent"));
-				  
-				 collection.updateOne(Filters.eq("_id",id), Updates.set("Sent", "yes"));
-				 System.out.println("done");
-				 
+			System.out.println("id" + id + "Alerte------------->" + Long.parseLong(Alerte.toString()) * 86400000);
+			System.out.println("Margine:  " + (date1.getTime() - current.getTime()));
+			System.out.println("Alerte:  " + (Long.parseLong(Alerte.toString()) * 86400000));
+			System.out.println("Sent:  " + Sent);
+			if (((date1.getTime() - current.getTime()) <= (Long.parseLong(Alerte.toString()) * 86400000))
+					&& (Sent.toString().equalsIgnoreCase("no"))) {
+				System.out.println("sending mail");
+				Mailer.send("clientinfo.arimar@gmail.com", "GECO2018Y", "clientinfo.arimar@gmail.com", "Alerte Cheque!",
+						"Vous avez un cheque dû aujourd'hui de: " + from.toString() + " à: " + to.toString());
+				System.out.println("try");
+				System.out.println(D.get("_id") + "==========" + D.get("Sent"));
+
+				collection.updateOne(Filters.eq("_id", id), Updates.set("Sent", "yes"));
+				System.out.println("done");
+
 			}
 
 			i++;
 		}
+		mongoClient.close();
+	}
+
+	@Scheduled(fixedRate = 50000)
+	public void Verify_cheques_notification() {
+		System.out.println("trying");
+		log.info("The time is now {}", dateFormat.format(new Date()));
+		System.out.println("====try====");
+		MongoClient mongoClient = new MongoClient(
+				new MongoClientURI("mongodb://ArmiraDATA:ArmiraDATA1@ds145895.mlab.com:45895/armira"));
+		System.out.println("Collection created successfully");
+		MongoDatabase database = mongoClient.getDatabase("armira");
+		/* Notifications */
+		MongoCollection<Document> collectionNotification = database.getCollection("Notification");
+
+		/* Cheques */
+		MongoCollection<Document> collectionCheque = database.getCollection("Cheque");
+		long count = collectionCheque.count();
+		System.out.println("Count: " + count);
+
+		/* Stats */
+		MongoCollection<Document> collection = database.getCollection("Stats");
+
+		FindIterable<Document> iterDoc = collection.find();
+		int i = 1;
+
+		// Getting the iterator
+		Iterator<Document> it = iterDoc.iterator();
+		while (it.hasNext()) {
+			// System.out.println(it.next().get("Date").toString());
+			Document D = it.next();
+			Object id = D.get("_id");
+			String StatsType = D.get("StatsType").toString();
+			String Total = D.get("Total").toString();
+			long num = Long.parseLong(Total);
+			System.out.println("Num===" + num);
+			if (StatsType.equalsIgnoreCase("ChequeStats")) {
+				System.out.println("Insert======");
+				if (num < count) {
+
+					for (int u = 0; u < (count - num); u++) {
+
+						Document obj1 = new Document();
+
+						obj1.put("NotificationType", "ChequeNotification");
+						obj1.put("NotificationDetail", "You have a new Cheque");
+						obj1.put("NotificationSeen", "no");
+						collectionNotification.insertOne(obj1);
+					}
+
+				}
+			}
+			Bson filter = Filters.eq("StatsType", "ChequeStats");
+			Bson query = Updates.set("Total", count);
+			collection.updateOne(filter, query);
+		}
+
+		
+		mongoClient.close();
+	}
+
+	@Scheduled(fixedRate = 50000)
+	public void Verify_AO_notification() {
+		System.out.println("trying");
+		log.info("The time is now {}", dateFormat.format(new Date()));
+		System.out.println("====try====");
+		MongoClient mongoClient = new MongoClient(
+				new MongoClientURI("mongodb://ArmiraDATA:ArmiraDATA1@ds145895.mlab.com:45895/armira"));
+		System.out.println("Collection created successfully");
+		MongoDatabase database = mongoClient.getDatabase("armira");
+		// Notifications 
+		MongoCollection<Document> collectionNotification = database.getCollection("Notification");
+
+		//Cheques 
+		MongoCollection<Document> collectionCheque = database.getCollection("AppelOffre");
+		long count = collectionCheque.count();
+		System.out.println("Count: " + count);
+
+		//Stats 
+		MongoCollection<Document> collection = database.getCollection("Stats");
+
+		FindIterable<Document> iterDoc = collection.find();
+		int i = 1;
+
+		// Getting the iterator
+		Iterator<Document> it = iterDoc.iterator();
+		while (it.hasNext()) {
+			// System.out.println(it.next().get("Date").toString());
+			Document D = it.next();
+			Object id = D.get("_id");
+			String StatsType = D.get("StatsType").toString();
+			String Total = D.get("Total").toString();
+			long num = Long.parseLong(Total);
+			System.out.println("Num===" + num);
+			if (StatsType.equalsIgnoreCase("AppelOffreStats")) {
+				System.out.println("Insert======");
+				if (num < count) {
+
+					for (int u = 0; u < (count - num); u++) {
+
+						Document obj1 = new Document();
+
+						obj1.put("NotificationType", "AppelOffreNotification");
+						obj1.put("NotificationDetail", "You have a new AppelOffre");
+						obj1.put("NotificationSeen", "no");
+						collectionNotification.insertOne(obj1);
+					}
+
+				}
+			}
+			Bson filter = Filters.eq("StatsType", "AppelOffreStats");
+			Bson query = Updates.set("Total", count);
+			collection.updateOne(filter, query);
+		}
+		mongoClient.close();
 	}
 }
-
