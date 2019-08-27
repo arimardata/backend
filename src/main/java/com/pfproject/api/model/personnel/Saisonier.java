@@ -10,24 +10,43 @@ public class Saisonier extends Personnel implements Serializable {
 
     private static final long serialVersionUID = 7994425925563724764L;
 
-    private String cout_par_jour;
+    private String coutParJour;
 
     private ObjectId id;
 
-    public String getCout_par_jour() {
-        return this.cout_par_jour;
+    private String createdAt;
+    private String updatedAt;
+
+    public String getCoutParJour() {
+        return this.coutParJour;
     }
 
-    public void setCout_par_jour(String cout_par_jour) {
-        this.cout_par_jour = cout_par_jour;
+    public void setCoutParJour(String coutParJour) {
+        this.coutParJour = coutParJour;
     }
 
-    public ObjectId getId() {
-        return this.id;
+    public String getId() {
+        return this.id.toString();
     }
 
     public void setId(ObjectId id) {
         this.id = id;
+    }
+
+    public String getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public Saisonier() {

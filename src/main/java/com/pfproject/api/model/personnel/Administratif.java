@@ -12,7 +12,9 @@ public class Administratif extends Personnel implements Serializable {
 
     private String salaire;
     private String cnss;
-    private String date_embauche;
+    private String dateEmbauche;
+    private String createdAt;
+    private String updatedAt;
 
     private ObjectId id;
 
@@ -32,16 +34,32 @@ public class Administratif extends Personnel implements Serializable {
         this.cnss = cnss;
     }
 
-    public String getDate_embauche() {
-        return this.date_embauche;
+    public String getDateEmbauche() {
+        return this.dateEmbauche;
     }
 
-    public void setDate_embauche(String date_embauche) {
-        this.date_embauche = date_embauche;
+    public void setDateEmbauche(String dateEmbauche) {
+        this.dateEmbauche = dateEmbauche;
     }
 
-    public ObjectId getId() {
-        return this.id;
+    public String getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getId() {
+        return this.id.toString();
     }
 
     public void setId(ObjectId id) {

@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.bson.types.ObjectId;
 
 @Service
 public class BasicConsomableService implements ConsomableService {
@@ -35,18 +36,18 @@ public class BasicConsomableService implements ConsomableService {
     @Override
     public Consomable update(final String id, final Consomable consomable) {
 
-        // final Consomable saved = repository.findOne(id);
-        // consomable.setId(id);
+        final Consomable saved = repository.findOne(id);
+        ObjectId objectId = new ObjectId(id);
+        consomable.setId(objectId);
 
-        // if (saved != null) {
-        // consomable.setCreatedAt(saved.getCreatedAt());
-        // consomable.setUpdatedAt(String.valueOf(LocalDateTime.now()));
-        // } else {
-        // consomable.setCreatedAt(String.valueOf(LocalDateTime.now()));
-        // }
-        // repository.save(consomable);
-        // return consomable;
-        return null;
+        if (saved != null) {
+            consomable.setCreatedAt(saved.getCreatedAt());
+            consomable.setUpdatedAt(String.valueOf(LocalDateTime.now()));
+        } else {
+            consomable.setCreatedAt(String.valueOf(LocalDateTime.now()));
+        }
+        repository.save(consomable);
+        return consomable;
     }
     /*
      * @Override public Cheque Modifier(final String id, final Cheque Cheque) {
@@ -58,7 +59,6 @@ public class BasicConsomableService implements ConsomableService {
     @Override
     public String delete(final String id) {
         repository.delete(id);
-        final Consomable saved = repository.findOne(id);
         return id;
     }
 

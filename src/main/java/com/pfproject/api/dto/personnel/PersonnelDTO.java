@@ -2,96 +2,80 @@ package com.pfproject.api.dto.personnel;
 
 import java.io.Serializable;
 
-import org.bson.types.ObjectId;
-
 public class PersonnelDTO implements Serializable {
 	private static final long serialVersionUID = 61901974548107674L;
-	//private ObjectId id;
-	private String CIN;
-	private String Nom;
-	private String Prenom;
-	private String DateDeNaissance;
-	private String Tel;
-	private String Email;
-	private String Diplome;
-	private String Qualite;
 
-	/*public ObjectId getId() {
-		return id;
-	}
-	public void setId(ObjectId id) {
-		this.id = id;
-	}*/
+	private String cin;
+	private String nom;
+	private String prenom;
+	private String dateDeNaissance;
+	private String tel;
+	private String email;
+	private String diplome;
+	private String qualite;
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getCin() {
+		return this.cin;
 	}
 
-	public String getCIN() {
-		return CIN;
-	}
-
-	public void setCIN(String cIN) {
-		CIN = cIN;
+	public void setCin(String cin) {
+		this.cin = cin;
 	}
 
 	public String getNom() {
-		return Nom;
+		return this.nom;
 	}
 
 	public void setNom(String nom) {
-		Nom = nom;
+		this.nom = nom;
 	}
 
 	public String getPrenom() {
-		return Prenom;
+		return this.prenom;
 	}
 
 	public void setPrenom(String prenom) {
-		Prenom = prenom;
+		this.prenom = prenom;
 	}
 
 	public String getDateDeNaissance() {
-		return DateDeNaissance;
+		return this.dateDeNaissance;
 	}
 
 	public void setDateDeNaissance(String dateDeNaissance) {
-		DateDeNaissance = dateDeNaissance;
+		this.dateDeNaissance = dateDeNaissance;
 	}
 
 	public String getTel() {
-		return Tel;
+		return this.tel;
 	}
 
 	public void setTel(String tel) {
-		Tel = tel;
+		this.tel = tel;
 	}
 
 	public String getEmail() {
-		return Email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 
 	public String getDiplome() {
-		return Diplome;
+		return this.diplome;
 	}
 
 	public void setDiplome(String diplome) {
-		Diplome = diplome;
+		this.diplome = diplome;
 	}
 
 	public String getQualite() {
-		return Qualite;
+		return this.qualite;
 	}
 
 	public void setQualite(String qualite) {
-		Qualite = qualite;
+		this.qualite = qualite;
 	}
 
-	
-
-	
 }

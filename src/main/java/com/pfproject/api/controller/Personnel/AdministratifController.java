@@ -1,8 +1,6 @@
-package com.pfproject.api.controller;
+package com.pfproject.api.controller.Personnel;
 
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.MessageDTO;
-import com.pfproject.api.dto.stock.NonConsomableDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,54 +11,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pfproject.api.service.NonConsomableService;
-import com.pfproject.api.model.stock.Non_consomable;
+import com.pfproject.api.service.Personnel.AdministratifService;
+import com.pfproject.api.dto.MessageDTO;
+import com.pfproject.api.dto.personnel.AdministratifDTO;
+import com.pfproject.api.model.personnel.Administratif;
+
 import org.apache.log4j.Logger;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/stock/nonconsomable")
-public class NonConsomableController {
+@RequestMapping(value = "/api/personnel/administratif")
+public class AdministratifController {
 
-    private final NonConsomableService service;
-    static Logger log = Logger.getLogger(AppeloffreController.class.getName());
+    private final AdministratifService service;
+    static Logger log = Logger.getLogger(PermanentController.class.getName());
 
     private final ConverterFacade converterFacade;
 
     @Autowired
-    public NonConsomableController(final NonConsomableService service, final ConverterFacade converterFacade) {
+    public AdministratifController(final AdministratifService service, final ConverterFacade converterFacade) {
         this.service = service;
         this.converterFacade = converterFacade;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody final NonConsomableDTO dto) {
-        Non_consomable non_consomable = service.create(converterFacade.convertNonConsomable(dto));
+    public ResponseEntity<?> create(@RequestBody final AdministratifDTO dto) {
+        Administratif administratif = service.create(converterFacade.convertAdministratif(dto));
 
-        return new ResponseEntity<>(non_consomable, HttpStatus.OK);
+        return new ResponseEntity<>(administratif, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
-        List<Non_consomable> liste = service.findAll();
+        List<Administratif> liste = service.findAll();
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/findone/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find_one(@PathVariable String id) {
-        Non_consomable saved = service.find(id);
+        Administratif saved = service.find(id);
 
         return new ResponseEntity<>(saved, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public ResponseEntity<?> Modifier(@PathVariable String id, @RequestBody final NonConsomableDTO dto) {
+    public ResponseEntity<?> Modifier(@PathVariable String id, @RequestBody final AdministratifDTO dto) {
 
-        Non_consomable non_consomable = service.update(id, converterFacade.convertNonConsomable(dto));
+        Administratif administratif = service.update(id, converterFacade.convertAdministratif(dto));
 
-        return new ResponseEntity<>(non_consomable, HttpStatus.OK);
+        return new ResponseEntity<>(administratif, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)

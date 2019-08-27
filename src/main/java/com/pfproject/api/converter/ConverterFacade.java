@@ -1,18 +1,12 @@
 package com.pfproject.api.converter;
 
 import com.pfproject.api.converter.factory.ConverterFactory;
-import com.pfproject.api.dto.AoDTO;
-import com.pfproject.api.dto.ChequeDTO;
-import com.pfproject.api.dto.NotificationDTO;
-import com.pfproject.api.dto.UserDTO;
-import com.pfproject.api.model.AppelOffre;
-import com.pfproject.api.dto.stock.ConsomableDTO;
-import com.pfproject.api.dto.stock.NonConsomableDTO;
-//import com.pfproject.api.model.stock.Consomable;
-//import com.pfproject.api.model.stock.Non_consomable;
-import com.pfproject.api.model.Cheque;
-import com.pfproject.api.model.Notification;
-import com.pfproject.api.model.User;
+import com.pfproject.api.dto.*;
+import com.pfproject.api.dto.stock.*;
+import com.pfproject.api.dto.personnel.*;
+import com.pfproject.api.model.*;
+import com.pfproject.api.model.stock.*;
+import com.pfproject.api.model.personnel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -34,15 +28,28 @@ public class ConverterFacade {
     public AppelOffre convertAo(final AoDTO dto) {
         return (AppelOffre) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
+
     public Notification convertNotification(final NotificationDTO dto) {
         return (Notification) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
-/*
+
     public Consomable convertConsomable(final ConsomableDTO dto) {
         return (Consomable) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
 
     public Non_consomable convertNonConsomable(final NonConsomableDTO dto) {
         return (Non_consomable) converterFactory.getConverter(dto.getClass()).convert(dto);
-    }*/
+    }
+
+    public Administratif convertAdministratif(final AdministratifDTO dto) {
+        return (Administratif) converterFactory.getConverter(dto.getClass()).convert(dto);
+    }
+
+    public Permanent convertPermanent(final PermanentDTO dto) {
+        return (Permanent) converterFactory.getConverter(dto.getClass()).convert(dto);
+    }
+
+    public Saisonier convertSaisonier(final SaisonierDTO dto) {
+        return (Saisonier) converterFactory.getConverter(dto.getClass()).convert(dto);
+    }
 }

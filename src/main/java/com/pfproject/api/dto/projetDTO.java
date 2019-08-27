@@ -2,15 +2,13 @@ package com.pfproject.api.dto;
 
 import java.io.Serializable;
 
-import org.bson.types.ObjectId;
-
 public class projetDTO implements Serializable {
 	private static final long serialVersionUID = 66901774547107674L;
-	//private ObjectId id;
+	// private ObjectId id;
 	private String DateDebut;
 	private String DateFin;
 	private String CoutTotal;
-	
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -38,6 +36,5 @@ public class projetDTO implements Serializable {
 	public void setCoutTotal(String coutTotal) {
 		CoutTotal = coutTotal;
 	}
-	
-	
+
 }

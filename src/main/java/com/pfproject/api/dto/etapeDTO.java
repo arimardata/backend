@@ -2,13 +2,11 @@ package com.pfproject.api.dto;
 
 import java.io.Serializable;
 
-import org.bson.types.ObjectId;
-
 public class etapeDTO implements Serializable {
 	private static final long serialVersionUID = 64901774547107674L;
-	//private ObjectId id;
+	// private ObjectId id;
 	private String Designation;
-	
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -21,6 +19,4 @@ public class etapeDTO implements Serializable {
 		this.Designation = designation;
 	}
 
-	
-	
 }
