@@ -7,7 +7,7 @@ import org.bson.types.ObjectId;
 public class AoDTO implements Serializable {
 	private static final long serialVersionUID = 61901774549107678L;
 	// private ObjectId id;
-	private ObjectId id;
+	//private ObjectId id;
 
 	private String chef_ouvrage;
 	private String Num_AO;
@@ -31,7 +31,7 @@ public class AoDTO implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
+/*
 	public ObjectId getId() {
 		return id;
 	}
@@ -39,7 +39,7 @@ public class AoDTO implements Serializable {
 	public void setId(ObjectId id) {
 		this.id = id;
 	}
-
+*/
 	public String getChef_ouvrage() {
 		return chef_ouvrage;
 	}

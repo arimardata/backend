@@ -5,6 +5,8 @@ import com.pfproject.api.model.AppelOffre;
 import java.util.List;
 
 public interface AppelOffreService {
+	
+	AppelOffre create(AppelOffre AppelOffre);
 
 	AppelOffre find(String id);
 

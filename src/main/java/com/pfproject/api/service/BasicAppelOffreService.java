@@ -22,6 +22,13 @@ public class BasicAppelOffreService implements AppelOffreService {
 	}
 
 	@Override
+	public AppelOffre create(AppelOffre AppelOffre) {
+		AppelOffre.setCreatedAt(String.valueOf(LocalDateTime.now()));
+		AppelOffre.setEtat("Favoris");
+		return repository.save(AppelOffre);
+	}
+
+	@Override
 	public AppelOffre find(final String id) {
 		return repository.findOne(id);
 	}
@@ -63,4 +70,5 @@ public class BasicAppelOffreService implements AppelOffreService {
 	 * 
 	 * }
 	 */
+
 }

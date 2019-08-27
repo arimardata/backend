@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class AppelOffre extends BaseEntity {
 
 	private static final long serialVersionUID = 7954325925563724764L;
-	private ObjectId id;
+	//private ObjectId id;
 
 	private String chef_ouvrage;
 	private String Num_AO;
@@ -43,7 +43,7 @@ public class AppelOffre extends BaseEntity {
 	public String getDate_Limite() {
 		return this.Date_Limite;
 	}
-
+/*
 	public void setId(ObjectId id) {
 		this.id = id;
 	}
@@ -51,7 +51,7 @@ public class AppelOffre extends BaseEntity {
 	public String getId() {
 		return this.id.toString();
 	}
-
+*/
 	public void setDate_Limite(String Date_Limite) {
 		this.Date_Limite = Date_Limite;
 	}

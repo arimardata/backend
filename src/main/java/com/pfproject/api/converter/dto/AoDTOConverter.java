@@ -18,7 +18,7 @@ public class AoDTOConverter implements Converter<AoDTO, AppelOffre> {
 		appel.setEstimation(dto.getEstimation());
 		appel.setEtat(dto.getEtat());
 		appel.setFiles(dto.getFiles());
-		appel.setId(dto.getId());
+		//appel.setId(dto.getId());
 		appel.setMise_en_ligne(dto.getMise_en_ligne());
 		appel.setMoinsDisant(dto.getMoinsDisant());
 		appel.setNum_AO(dto.getNum_AO());

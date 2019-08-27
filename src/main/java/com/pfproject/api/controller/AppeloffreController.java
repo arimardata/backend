@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pfproject.api.service.AppelOffreService;
 import com.pfproject.api.service.ChequeService;
 import com.pfproject.api.model.AppelOffre;
+import com.pfproject.api.model.Cheque;
+
 import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
@@ -50,6 +52,23 @@ public class AppeloffreController {
 		List<AppelOffre> liste = service.findAll();
 
 		return new ResponseEntity<>(liste, HttpStatus.OK);
+	}
+	@RequestMapping(value = "/ajouter", method = RequestMethod.POST)
+    public ResponseEntity<?> create(@RequestBody final AoDTO dto) {
+		AppelOffre AppelOffre = service.create(converterFacade.convertAo(dto));
+        return new ResponseEntity<>(AppelOffre, HttpStatus.OK);
+    }
+	@RequestMapping(value = "/modifier/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> Modifier(@PathVariable String id,@RequestBody final AoDTO dto) {
+		//Cheque saved = service.find(id);
+		service.update(id, converterFacade.convertAo(dto));
+
+		//saved.setEtat(new_etat);
+
+		//service.update(id, saved);
+		final MessageDTO response = new MessageDTO();
+		response.setMessage("blabal");
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/findone/{id}", method = RequestMethod.GET)
