@@ -1,5 +1,6 @@
 package com.pfproject.api.controller;
 
+import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.AoDTO;
 // import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.MessageDTO;
@@ -28,11 +29,14 @@ import java.util.List;
 public class AppeloffreController {
 
 	private final AppelOffreService service;
+	private final ConverterFacade converterFacade;
+
 	static Logger log = Logger.getLogger(AppeloffreController.class.getName());
 
 	@Autowired
-	public AppeloffreController(final AppelOffreService service) {
+	public AppeloffreController(final AppelOffreService service, final ConverterFacade converterFacade) {
 		this.service = service;
+		this.converterFacade = converterFacade;
 	}
 
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
@@ -122,6 +126,11 @@ public class AppeloffreController {
 		response.setMessage("le moins disant avec le montant ont été ajouté");
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<?> delete(@PathVariable String id) {
+		String response=service.delete(id);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}	
 
 	// @RequestMapping(value = "/statistics", method = RequestMethod.GET)
 	// public ResponseEntity<?> statistics() {

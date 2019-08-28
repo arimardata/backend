@@ -18,7 +18,7 @@ public class AoDTO implements Serializable {
 	private String Type;
 	private String Ville;
 	private String Estimation;
-	private String Date_Limite;
+	private String Date_limite;
 	private String Autres_details;
 	private String etat;
 	private String pdfs;
@@ -104,14 +104,14 @@ public class AoDTO implements Serializable {
 		Estimation = estimation;
 	}
 
-	public String getDate_Limite() {
-		return Date_Limite;
-	}
+	
 
-	public void setDate_Limite(String date_Limite) {
-		Date_Limite = date_Limite;
+	public String getDate_limite() {
+		return Date_limite;
 	}
-
+	public void setDate_limite(String date_limite) {
+		Date_limite = date_limite;
+	}
 	public String getAutres_details() {
 		return Autres_details;
 	}

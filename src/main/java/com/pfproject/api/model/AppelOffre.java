@@ -10,19 +10,19 @@ public class AppelOffre extends BaseEntity {
 	//private ObjectId id;
 
 	private String chef_ouvrage;
-	private String Num_AO;
-	private String Num_Ordre;
+	private String num_AO;
+	private String num_Ordre;
 
-	private String Caution;
-	private String Mise_en_ligne;
-	private String Type;
-	private String Ville;
-	private String Estimation;
-	private String Date_Limite;
-	private String Autres_details;
+	private String caution;
+	private String mise_en_ligne;
+	private String type;
+	private String ville;
+	private String estimation;
+	private String date_limite;
+	private String autres_details;
 	private String etat;
-	private String PDFs;
-	private String Files;
+	private String pdfs;
+	private String files;
 
 	private String cautionFinal;
 	private String moinsDisant;
@@ -32,40 +32,81 @@ public class AppelOffre extends BaseEntity {
 
 	}
 
+	public String getChef_ouvrage() {
+		return chef_ouvrage;
+	}
+
+	public void setChef_ouvrage(String chef_ouvrage) {
+		this.chef_ouvrage = chef_ouvrage;
+	}
+
+	public String getNum_AO() {
+		return num_AO;
+	}
+
+	public void setNum_AO(String num_AO) {
+		this.num_AO = num_AO;
+	}
+
 	public String getNum_Ordre() {
-		return this.Num_Ordre;
+		return num_Ordre;
 	}
 
-	public void setNum_Ordre(String Num_Ordre) {
-		this.Num_Ordre = Num_Ordre;
+	public void setNum_Ordre(String num_Ordre) {
+		this.num_Ordre = num_Ordre;
 	}
 
-	public String getDate_Limite() {
-		return this.Date_Limite;
-	}
-/*
-	public void setId(ObjectId id) {
-		this.id = id;
+	public String getCaution() {
+		return caution;
 	}
 
-	public String getId() {
-		return this.id.toString();
-	}
-*/
-	public void setDate_Limite(String Date_Limite) {
-		this.Date_Limite = Date_Limite;
+	public void setCaution(String caution) {
+		this.caution = caution;
 	}
 
+	public String getMise_en_ligne() {
+		return mise_en_ligne;
+	}
+
+	public void setMise_en_ligne(String mise_en_ligne) {
+		this.mise_en_ligne = mise_en_ligne;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public String getEstimation() {
+		return estimation;
+	}
+
+	public void setEstimation(String estimation) {
+		this.estimation = estimation;
+	}
+
+	
 	public String getAutres_details() {
-		return this.Autres_details;
+		return autres_details;
 	}
 
-	public void setAutres_details(String Autres_details) {
-		this.Autres_details = Autres_details;
+	public void setAutres_details(String autres_details) {
+		this.autres_details = autres_details;
 	}
 
 	public String getEtat() {
-		return this.etat;
+		return etat;
 	}
 
 	public void setEtat(String etat) {
@@ -73,75 +114,19 @@ public class AppelOffre extends BaseEntity {
 	}
 
 	public String getPdfs() {
-		return this.PDFs;
+		return pdfs;
 	}
 
 	public void setPdfs(String pdfs) {
-		this.PDFs = pdfs;
+		this.pdfs = pdfs;
 	}
 
 	public String getFiles() {
-		return this.Files;
+		return files;
 	}
 
 	public void setFiles(String files) {
-		this.Files = files;
-	}
-
-	public String getChef_ouvrage() {
-		return this.chef_ouvrage;
-	}
-
-	public void setChef_ouvrage(String Chef_ouvrage) {
-		this.chef_ouvrage = Chef_ouvrage;
-	}
-
-	public String getNum_AO() {
-		return this.Num_AO;
-	}
-
-	public void setNum_AO(String Num_AO) {
-		this.Num_AO = Num_AO;
-	}
-
-	public String getCaution() {
-		return this.Caution;
-	}
-
-	public void setCaution(String Caution) {
-		this.Caution = Caution;
-	}
-
-	public String getMise_en_ligne() {
-		return this.Mise_en_ligne;
-	}
-
-	public void setMise_en_ligne(String Mise_en_ligne) {
-		this.Mise_en_ligne = Mise_en_ligne;
-	}
-
-	public String getType() {
-		return this.Type;
-	}
-
-	public void setType(String Type) {
-		this.Type = Type;
-	}
-
-	public String getVille() {
-		return this.Ville;
-	}
-
-	public void setVille(String Ville) {
-		this.Ville = Ville;
-	}
-
-	public String getEstimation() {
-		return this.Estimation;
-	}
-
-	public void setEstimation(String Estimation) {
-		this.Estimation = Estimation;
+		this.files = files;
 	}
 
 	public String getCautionFinal() {
@@ -153,7 +138,7 @@ public class AppelOffre extends BaseEntity {
 	}
 
 	public String getMoinsDisant() {
-		return this.moinsDisant;
+		return moinsDisant;
 	}
 
 	public void setMoinsDisant(String moinsDisant) {
@@ -168,4 +153,17 @@ public class AppelOffre extends BaseEntity {
 		this.montant = montant;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public String getDate_limite() {
+		return date_limite;
+	}
+
+	public void setDate_limite(String date_limite) {
+		this.date_limite = date_limite;
+	}
+
+	
 }
