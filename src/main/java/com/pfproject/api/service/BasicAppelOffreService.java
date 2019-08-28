@@ -63,4 +63,9 @@ public class BasicAppelOffreService implements AppelOffreService {
 	 * 
 	 * }
 	 */
+
+	@Override
+	public List<String> findByEtat(String etat) {
+		return repository.findByEtat(etat);
+	}
 }

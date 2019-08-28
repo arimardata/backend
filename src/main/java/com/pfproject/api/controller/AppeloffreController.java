@@ -40,6 +40,13 @@ public class AppeloffreController {
 		return new ResponseEntity<>(liste, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/findByetat/{etat}", method = RequestMethod.GET)
+	public ResponseEntity<?> findByetat(@PathVariable String etat) {
+		List<String> liste = service.findByEtat(etat);
+
+		return new ResponseEntity<>(liste, HttpStatus.OK);
+	}
+
 	@RequestMapping(value = "/findone/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find_one(@PathVariable String id) {
 		AppelOffre saved = service.find(id);

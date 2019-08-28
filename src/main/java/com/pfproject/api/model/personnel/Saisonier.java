@@ -11,6 +11,25 @@ public class Saisonier extends Personnel implements Serializable {
     private static final long serialVersionUID = 7994425925563724764L;
 
     private String coutParJour;
+    private String dateDebut;
+    private String dateFin;
+
+	public String getDateDebut() {
+		return this.dateDebut;
+	}
+
+	public void setDateDebut(String dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+	public String getDateFin() {
+		return this.dateFin;
+	}
+
+	public void setDateFin(String dateFin) {
+		this.dateFin = dateFin;
+	}
+
 
     private ObjectId id;
 

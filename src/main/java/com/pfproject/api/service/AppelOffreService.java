@@ -14,5 +14,7 @@ public interface AppelOffreService {
 
 	String delete(String id);
 
+	List<String> findByEtat(String etat);
+
 	/* void Change_Etat(String id, String etat); */
 }

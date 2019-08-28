@@ -18,6 +18,8 @@ public class SaisonierDTOConverter implements Converter<SaisonierDTO, Saisonier>
         saisonier.setQualite(dto.getQualite());
         saisonier.setTel(dto.getTel());
         saisonier.setCoutParJour(dto.getCoutParJour());
+        saisonier.setDateDebut(dto.getDateDebut());
+        saisonier.setDateFin(dto.getDateFin());
 
         return saisonier;
     }
