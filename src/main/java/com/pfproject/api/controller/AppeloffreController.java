@@ -35,6 +35,7 @@ public class AppeloffreController {
 
 	@Autowired
 	public AppeloffreController(final AppelOffreService service, final ConverterFacade converterFacade) {
+		super();
 		this.service = service;
 		this.converterFacade = converterFacade;
 	}
