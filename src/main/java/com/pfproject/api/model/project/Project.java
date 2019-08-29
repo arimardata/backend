@@ -3,9 +3,15 @@ package com.pfproject.api.model.project;
 import java.io.Serializable;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.pfproject.api.model.project.Step;
+import com.pfproject.api.model.project.Materiel;
+import com.pfproject.api.model.project.Personnel;
 
 import java.util.List;
 
+@Document(collection = "Project")
 public class Project implements Serializable {
     private static final long serialVersionUID = 61921774549107678L;
 
@@ -21,6 +27,16 @@ public class Project implements Serializable {
     private List<Step> etapes;
     private List<Materiel> materiels;
     private List<Personnel> personnels;
+
+    private String createdAt;
+
+    public String getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public ObjectId getId() {
         return this.id;
@@ -66,16 +82,16 @@ public class Project implements Serializable {
         return this.etapes;
     }
 
-    public void setEtapes(List<Step> etapes) {
-        this.etapes = etapes;
+    public void setEtapes(List<Step> etapes2) {
+        this.etapes = etapes2;
     }
 
     public List<Materiel> getMateriels() {
         return this.materiels;
     }
 
-    public void setMateriels(List<Materiel> materiels) {
-        this.materiels = materiels;
+    public void setMateriels(List<Materiel> materiels2) {
+        this.materiels = materiels2;
     }
 
     public List<Personnel> getPersonnels() {

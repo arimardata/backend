@@ -4,9 +4,11 @@ import com.pfproject.api.converter.factory.ConverterFactory;
 import com.pfproject.api.dto.*;
 import com.pfproject.api.dto.stock.*;
 import com.pfproject.api.dto.personnel.*;
+import com.pfproject.api.dto.project.*;
 import com.pfproject.api.model.*;
 import com.pfproject.api.model.stock.*;
 import com.pfproject.api.model.personnel.*;
+import com.pfproject.api.model.project.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -51,5 +53,9 @@ public class ConverterFacade {
 
     public Saisonier convertSaisonier(final SaisonierDTO dto) {
         return (Saisonier) converterFactory.getConverter(dto.getClass()).convert(dto);
+    }
+
+    public Project convertProject(final ProjectDTO dto) {
+        return (Project) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
 }

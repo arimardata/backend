@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 import org.bson.types.ObjectId;
 
-public class Step implements Serializable {
+public class StepDTO implements Serializable {
     private static final long serialVersionUID = 61901774449107678L;
 
-    public Step() {
+    public StepDTO() {
         super();
     }
 

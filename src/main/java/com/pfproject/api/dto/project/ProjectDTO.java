@@ -2,7 +2,9 @@ package com.pfproject.api.dto.project;
 
 import java.io.Serializable;
 
-import org.bson.types.ObjectId;
+import com.pfproject.api.dto.project.StepDTO;
+import com.pfproject.api.dto.project.MaterielDTO;
+import com.pfproject.api.dto.project.PersonnelDTO;
 
 import java.util.List;
 
@@ -17,9 +19,9 @@ public class ProjectDTO implements Serializable {
     private String dateDebut;
     private String dateFin;
     private String chefDuProjet;
-    private List<Step> etapes;
-    private List<Materiel> materiels;
-    private List<Personnel> personnels;
+    private List<StepDTO> etapes;
+    private List<MaterielDTO> materiels;
+    private List<PersonnelDTO> personnels;
 
     public String getNumAo() {
         return this.numAo;
@@ -53,27 +55,27 @@ public class ProjectDTO implements Serializable {
         this.chefDuProjet = chefDuProjet;
     }
 
-    public List<Step> getEtapes() {
+    public List<StepDTO> getEtapes() {
         return this.etapes;
     }
 
-    public void setEtapes(List<Step> etapes) {
+    public void setEtapes(List<StepDTO> etapes) {
         this.etapes = etapes;
     }
 
-    public List<Materiel> getMateriels() {
+    public List<MaterielDTO> getMateriels() {
         return this.materiels;
     }
 
-    public void setMateriels(List<Materiel> materiels) {
+    public void setMateriels(List<MaterielDTO> materiels) {
         this.materiels = materiels;
     }
 
-    public List<Personnel> getPersonnels() {
+    public List<PersonnelDTO> getPersonnels() {
         return this.personnels;
     }
 
-    public void setPersonnels(List<Personnel> personnels) {
+    public void setPersonnels(List<PersonnelDTO> personnels) {
         this.personnels = personnels;
     }
 

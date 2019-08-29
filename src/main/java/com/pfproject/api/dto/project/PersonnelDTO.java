@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 import org.bson.types.ObjectId;
 
-public class Personnel implements Serializable {
+public class PersonnelDTO implements Serializable {
     private static final long serialVersionUID = 61901773539107678L;
 
-    public Personnel() {
+    public PersonnelDTO() {
         super();
     }
 
