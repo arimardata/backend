@@ -14,11 +14,11 @@ public class AoDTOConverter implements Converter<AoDTO, AppelOffre> {
 		appel.setCaution(dto.getCaution());
 		appel.setCautionFinal(dto.getCautionFinal());
 		appel.setChef_ouvrage(dto.getChef_ouvrage());
-		appel.setDate_Limite(dto.getDate_Limite());
+		appel.setDate_limite(dto.getDate_limite());
 		appel.setEstimation(dto.getEstimation());
 		appel.setEtat(dto.getEtat());
 		appel.setFiles(dto.getFiles());
-		appel.setId(dto.getId());
+		//appel.setId(dto.getId());
 		appel.setMise_en_ligne(dto.getMise_en_ligne());
 		appel.setMoinsDisant(dto.getMoinsDisant());
 		appel.setNum_AO(dto.getNum_AO());

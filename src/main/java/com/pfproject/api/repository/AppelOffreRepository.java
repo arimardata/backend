@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AppelOffreRepository extends MongoRepository<AppelOffre, String> {
-    List<String> findByEtat(String etat);
+    List<AppelOffre> findByEtat(final String etat);
 }

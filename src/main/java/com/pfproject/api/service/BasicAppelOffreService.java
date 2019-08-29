@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
@@ -19,6 +20,13 @@ public class BasicAppelOffreService implements AppelOffreService {
 	@Autowired
 	public BasicAppelOffreService(final AppelOffreRepository repository) {
 		this.repository = repository;
+	}
+
+	@Override
+	public AppelOffre create(AppelOffre AppelOffre) {
+		AppelOffre.setCreatedAt(String.valueOf(LocalDateTime.now()));
+		AppelOffre.setEtat("Favoris");
+		return repository.save(AppelOffre);
 	}
 
 	@Override
@@ -52,20 +60,15 @@ public class BasicAppelOffreService implements AppelOffreService {
 		repository.delete(id);
 		return id;
 	}
-	/*
-	 * @Override public void Change_Etat(final String id,final String New_Etat) {
-	 * 
-	 * final AppelOffre saved=repository.findOne(id);
-	 * 
-	 * saved.setEtat(New_Etat);
-	 * 
-	 * repository.save();
-	 * 
-	 * }
-	 */
 
 	@Override
 	public List<String> findByEtat(String etat) {
-		return repository.findByEtat(etat);
+		List<AppelOffre> aos = repository.findByEtat(etat);
+		List<String> numAos = new ArrayList<String>();
+		for (AppelOffre ao : aos) {
+			numAos.add(ao.getNum_AO());
+		}
+		return numAos;
 	}
+
 }

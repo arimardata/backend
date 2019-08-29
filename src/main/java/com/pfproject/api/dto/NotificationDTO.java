@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.bson.types.ObjectId;
 
 public class NotificationDTO implements Serializable {
-	private static final long serialVersionUID = 61904874549107678L;
+	private static final long serialVersionUID = 61904874549257678L;
 	private ObjectId id;
 
 	private String NotificationType;

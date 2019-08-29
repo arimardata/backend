@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface AppelOffreService {
 
+	AppelOffre create(AppelOffre AppelOffre);
+
 	AppelOffre find(String id);
 
 	List<AppelOffre> findAll();
@@ -16,5 +18,4 @@ public interface AppelOffreService {
 
 	List<String> findByEtat(String etat);
 
-	/* void Change_Etat(String id, String etat); */
 }

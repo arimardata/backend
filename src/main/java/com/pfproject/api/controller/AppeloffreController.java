@@ -1,5 +1,6 @@
 package com.pfproject.api.controller;
 
+import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.AoDTO;
 // import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.MessageDTO;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pfproject.api.service.AppelOffreService;
 import com.pfproject.api.model.AppelOffre;
+import com.pfproject.api.model.Cheque;
+
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -26,11 +29,14 @@ import java.util.List;
 public class AppeloffreController {
 
 	private final AppelOffreService service;
+	private final ConverterFacade converterFacade;
+
 	static Logger log = Logger.getLogger(AppeloffreController.class.getName());
 
 	@Autowired
-	public AppeloffreController(final AppelOffreService service) {
+	public AppeloffreController(final AppelOffreService service, final ConverterFacade converterFacade) {
 		this.service = service;
+		this.converterFacade = converterFacade;
 	}
 
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
@@ -40,10 +46,29 @@ public class AppeloffreController {
 		return new ResponseEntity<>(liste, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/ajouter", method = RequestMethod.POST)
+	public ResponseEntity<?> create(@RequestBody final AoDTO dto) {
+		AppelOffre AppelOffre = service.create(converterFacade.convertAo(dto));
+		return new ResponseEntity<>(AppelOffre, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/modifier/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> Modifier(@PathVariable String id, @RequestBody final AoDTO dto) {
+		// Cheque saved = service.find(id);
+		service.update(id, converterFacade.convertAo(dto));
+
+		// saved.setEtat(new_etat);
+
+		// service.update(id, saved);
+		final MessageDTO response = new MessageDTO();
+		response.setMessage("blabal");
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
 	@RequestMapping(value = "/findByetat/{etat}", method = RequestMethod.GET)
 	public ResponseEntity<?> findByetat(@PathVariable String etat) {
 		List<String> liste = service.findByEtat(etat);
-
+		// log.info(liste);
 		return new ResponseEntity<>(liste, HttpStatus.OK);
 	}
 
@@ -108,6 +133,12 @@ public class AppeloffreController {
 		service.update(id, saved);
 		final MessageDTO response = new MessageDTO();
 		response.setMessage("le moins disant avec le montant ont été ajouté");
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<?> delete(@PathVariable String id) {
+		String response = service.delete(id);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
