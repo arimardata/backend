@@ -39,4 +39,9 @@ public class BasicProjectService implements ProjectService {
         return repository.findAll();
     }
 
+    @Override
+    public Project findByNumAO(String numAo) {
+        return repository.findByNumAO(numAo);
+    }
+
 }

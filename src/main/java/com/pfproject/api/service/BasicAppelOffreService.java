@@ -4,6 +4,7 @@ import com.pfproject.api.model.AppelOffre;
 import com.pfproject.api.repository.AppelOffreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.pfproject.api.service.AppelOffreService;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -69,6 +70,11 @@ public class BasicAppelOffreService implements AppelOffreService {
 			numAos.add(ao.getNum_AO());
 		}
 		return numAos;
+	}
+
+	@Override
+	public AppelOffre findByNum_AO(String num_AO) {
+		return repository.findByNumAO(num_AO);
 	}
 
 }

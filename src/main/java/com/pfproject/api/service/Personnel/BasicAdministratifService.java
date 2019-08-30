@@ -66,6 +66,7 @@ public class BasicAdministratifService implements AdministratifService {
     @Override
     public Administratif create(final Administratif administratif) {
         administratif.setCreatedAt(String.valueOf(LocalDateTime.now()));
+        administratif.setDisponible(true);
         return repository.save(administratif);
     }
 

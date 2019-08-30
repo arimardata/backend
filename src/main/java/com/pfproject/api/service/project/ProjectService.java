@@ -12,4 +12,6 @@ public interface ProjectService {
 
     List<Project> findAll();
 
+    Project findByNumAO(String numAo);
+
 }

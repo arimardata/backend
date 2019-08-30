@@ -66,6 +66,7 @@ public class BasicPermanentService implements PermanentService {
     @Override
     public Permanent create(final Permanent permanent) {
         permanent.setCreatedAt(String.valueOf(LocalDateTime.now()));
+        permanent.setDisponible(true);
         return repository.save(permanent);
     }
 

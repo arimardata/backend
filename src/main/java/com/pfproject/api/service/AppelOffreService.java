@@ -18,4 +18,6 @@ public interface AppelOffreService {
 
 	List<String> findByEtat(String etat);
 
+	AppelOffre findByNum_AO(String num_AO);
+
 }

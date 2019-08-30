@@ -66,6 +66,7 @@ public class BasicSaisonierService implements SaisonierService {
     @Override
     public Saisonier create(final Saisonier saisonier) {
         saisonier.setCreatedAt(String.valueOf(LocalDateTime.now()));
+        saisonier.setDisponible(true);
         return repository.save(saisonier);
     }
 

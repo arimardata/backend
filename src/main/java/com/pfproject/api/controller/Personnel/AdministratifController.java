@@ -32,7 +32,6 @@ public class AdministratifController {
     private final AdministratifService service;
     // private final PermanentService permanentservice;
     // private final SaisonierService saisonierservice;
-    static Logger log = Logger.getLogger(PermanentController.class.getName());
 
     private final ConverterFacade converterFacade;
 

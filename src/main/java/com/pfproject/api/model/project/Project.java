@@ -38,8 +38,8 @@ public class Project implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public ObjectId getId() {
-        return this.id;
+    public String getId() {
+        return this.id.toString();
     }
 
     public void setId(ObjectId id) {
