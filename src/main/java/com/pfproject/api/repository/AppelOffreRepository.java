@@ -13,4 +13,7 @@ public interface AppelOffreRepository extends MongoRepository<AppelOffre, String
 
     @Query("{ 'num_AO' : ?0 }")
     AppelOffre findByNumAO(final String num_AO);
+
+    @Query(value = "{'etat': {$regex: '^?0$', $options: 'i'}}", count = true)
+    public Long countByEtat(String etat);
 }

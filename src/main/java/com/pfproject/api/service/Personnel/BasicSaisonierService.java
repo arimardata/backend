@@ -24,6 +24,11 @@ public class BasicSaisonierService implements SaisonierService {
     }
 
     @Override
+    public Long count() {
+        return repository.count();
+    }
+
+    @Override
     public Saisonier find(final String id) {
         return repository.findOne(id);
     }
@@ -59,7 +64,9 @@ public class BasicSaisonierService implements SaisonierService {
 
     @Override
     public String delete(final String id) {
-        repository.delete(id);
+        Saisonier saved = repository.findOne(id);
+        saved.setArchived(true);
+        repository.save(saved);
         return id;
     }
 
@@ -67,7 +74,13 @@ public class BasicSaisonierService implements SaisonierService {
     public Saisonier create(final Saisonier saisonier) {
         saisonier.setCreatedAt(String.valueOf(LocalDateTime.now()));
         saisonier.setDisponible(true);
+
+        saisonier.setArchived(false);
         return repository.save(saisonier);
     }
 
+    @Override
+    public List<Saisonier> findByArchived() {
+        return repository.findByArchivedNotEqual(true);
+    }
 }

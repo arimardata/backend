@@ -20,4 +20,8 @@ public interface AppelOffreService {
 
 	AppelOffre findByNum_AO(String num_AO);
 
+	Long countByEtat(String etat);
+
+	Long count();
+
 }

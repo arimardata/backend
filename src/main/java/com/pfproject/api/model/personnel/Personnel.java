@@ -18,6 +18,15 @@ public class Personnel implements Serializable {
     private String diplome;
     private String qualite;
     private Boolean disponible;
+    private Boolean archived;
+
+    public Boolean getArchived() {
+        return this.archived;
+    }
+
+    public void setArchived(Boolean archived) {
+        this.archived = archived;
+    }
 
     public Boolean getDisponible() {
         return this.disponible;

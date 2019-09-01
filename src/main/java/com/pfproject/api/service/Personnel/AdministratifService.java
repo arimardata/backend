@@ -9,9 +9,13 @@ public interface AdministratifService {
 
     Administratif find(String id);
 
+    List<Administratif> findByArchived();
+
     List<Administratif> findAll();
 
     Administratif update(String id, Administratif object);
 
     String delete(String id);
+
+    Long count();
 }

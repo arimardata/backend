@@ -24,6 +24,11 @@ public class BasicPermanentService implements PermanentService {
     }
 
     @Override
+    public Long count() {
+        return repository.count();
+    }
+
+    @Override
     public Permanent find(final String id) {
         return repository.findOne(id);
     }
@@ -59,14 +64,22 @@ public class BasicPermanentService implements PermanentService {
 
     @Override
     public String delete(final String id) {
-        repository.delete(id);
+        Permanent saved = repository.findOne(id);
+        saved.setArchived(true);
+        repository.save(saved);
         return id;
+    }
+
+    @Override
+    public List<Permanent> findByArchived() {
+        return repository.findByArchivedNotEqual(true);
     }
 
     @Override
     public Permanent create(final Permanent permanent) {
         permanent.setCreatedAt(String.valueOf(LocalDateTime.now()));
         permanent.setDisponible(true);
+        permanent.setArchived(false);
         return repository.save(permanent);
     }
 

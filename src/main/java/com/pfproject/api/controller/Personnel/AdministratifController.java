@@ -30,14 +30,17 @@ import java.util.HashMap;
 public class AdministratifController {
 
     private final AdministratifService service;
-    // private final PermanentService permanentservice;
-    // private final SaisonierService saisonierservice;
+    private final PermanentService permanentservice;
+    private final SaisonierService saisonierservice;
 
     private final ConverterFacade converterFacade;
 
     @Autowired
-    public AdministratifController(final AdministratifService service, final ConverterFacade converterFacade) {
+    public AdministratifController(final AdministratifService service, SaisonierService saisonierservice,
+            PermanentService permanentservice, final ConverterFacade converterFacade) {
         this.service = service;
+        this.permanentservice = permanentservice;
+        this.saisonierservice = saisonierservice;
         this.converterFacade = converterFacade;
     }
 
@@ -50,43 +53,42 @@ public class AdministratifController {
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
-        List<Administratif> liste = service.findAll();
+        List<Administratif> liste = service.findByArchived();
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
-    // @RequestMapping(value = "/findNomPrenom", method = RequestMethod.GET)
-    // public ResponseEntity<?> findNomPrenom() {
-    // ArrayList<Administratif> administratifs = service.findAll();
-    // ArrayList<Saisonier> saisoniers = saisonierservice.findAll();
-    // ArrayList<Permanent> permanents = permanentservice.findAll();
+    @RequestMapping(value = "/findNomPrenom", method = RequestMethod.GET)
+    public ResponseEntity<?> findNomPrenom() {
+        List<Administratif> administratifs = service.findAll();
+        List<Saisonier> saisoniers = saisonierservice.findAll();
+        List<Permanent> permanents = permanentservice.findAll();
 
-    // ArrayList<HashMap<String, String>> response = new ArrayList<HashMap<String,
-    // String>>();
+        List<HashMap<String, String>> response = new ArrayList<HashMap<String, String>>();
 
-    // for (Aministratif administratif : administratifs) {
-    // HashMap<String, String> values = new HashMap<String, String>();
-    // values.put("id", administratif.getId());
-    // values.put("nom", administratif.getNom() + " " + administratif.getPrenom());
-    // response.add(values);
-    // }
+        for (Administratif administratif : administratifs) {
+            HashMap<String, String> values = new HashMap<String, String>();
+            values.put("id", administratif.getId());
+            values.put("nom", administratif.getNom() + " " + administratif.getPrenom());
+            response.add(values);
+        }
 
-    // for (Saisonier saisonier : saisoniers) {
-    // HashMap<String, String> values = new HashMap<String, String>();
-    // values.put("id", saisonier.getId());
-    // values.put("nom", saisonier.getNom() + " " + saisonier.getPrenom());
-    // response.add(values);
-    // }
+        for (Saisonier saisonier : saisoniers) {
+            HashMap<String, String> values = new HashMap<String, String>();
+            values.put("id", saisonier.getId());
+            values.put("nom", saisonier.getNom() + " " + saisonier.getPrenom());
+            response.add(values);
+        }
 
-    // for (Permanents permanent : permanents) {
-    // HashMap<String, String> values = new HashMap<String, String>();
-    // values.put("id", permanent.getId());
-    // values.put("nom", permanent.getNom() + " " + permanent.getPrenom());
-    // response.add(values);
-    // }
+        for (Permanent permanent : permanents) {
+            HashMap<String, String> values = new HashMap<String, String>();
+            values.put("id", permanent.getId());
+            values.put("nom", permanent.getNom() + " " + permanent.getPrenom());
+            response.add(values);
+        }
 
-    // return new ResponseEntity<>(response, HttpStatus.OK);
-    // }
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/findone/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find_one(@PathVariable String id) {

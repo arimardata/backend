@@ -77,4 +77,14 @@ public class BasicAppelOffreService implements AppelOffreService {
 		return repository.findByNumAO(num_AO);
 	}
 
+	@Override
+	public Long countByEtat(String etat) {
+		return repository.countByEtat(etat);
+	}
+
+	@Override
+	public Long count() {
+		return repository.count();
+	}
+
 }

@@ -61,9 +61,9 @@ public class ProjetsController {
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
-        // List<AppelOffre> liste = service.findAll();
+        List<Project> liste = service.findAll();
 
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/ajouter", method = RequestMethod.POST)

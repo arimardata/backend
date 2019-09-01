@@ -59,7 +59,9 @@ public class BasicAdministratifService implements AdministratifService {
 
     @Override
     public String delete(final String id) {
-        repository.delete(id);
+        Administratif saved = repository.findOne(id);
+        saved.setArchived(true);
+        repository.save(saved);
         return id;
     }
 
@@ -67,7 +69,17 @@ public class BasicAdministratifService implements AdministratifService {
     public Administratif create(final Administratif administratif) {
         administratif.setCreatedAt(String.valueOf(LocalDateTime.now()));
         administratif.setDisponible(true);
+        administratif.setArchived(false);
         return repository.save(administratif);
     }
 
+    @Override
+    public List<Administratif> findByArchived() {
+        return repository.findByArchivedNotEqual(true);
+    }
+
+    @Override
+    public Long count() {
+        return repository.count();
+    }
 }

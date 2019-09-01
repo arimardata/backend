@@ -14,4 +14,6 @@ public interface ConsomableService {
     Consomable update(String id, Consomable object);
 
     String delete(String id);
+
+    Long count();
 }
