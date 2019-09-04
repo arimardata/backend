@@ -15,6 +15,42 @@ public class StepDTO implements Serializable {
     private String designation;
     private String duree;
     private String responsable;
+    private String coutConsomable;
+    private String coutNonConsomable;
+    private String coutPermanent;
+    private String coutSaisonier;
+
+    public String getCoutConsomable() {
+        return this.coutConsomable;
+    }
+
+    public void setCoutConsomable(String coutConsomable) {
+        this.coutConsomable = coutConsomable;
+    }
+
+    public String getCoutNonConsomable() {
+        return this.coutNonConsomable;
+    }
+
+    public void setCoutNonConsomable(String coutNonConsomable) {
+        this.coutNonConsomable = coutNonConsomable;
+    }
+
+    public String getCoutPermanent() {
+        return this.coutPermanent;
+    }
+
+    public void setCoutPermanent(String coutPermanent) {
+        this.coutPermanent = coutPermanent;
+    }
+
+    public String getCoutSaisonier() {
+        return this.coutSaisonier;
+    }
+
+    public void setCoutSaisonier(String coutSaisonier) {
+        this.coutSaisonier = coutSaisonier;
+    }
 
     public String getEtape() {
         return this.etape;

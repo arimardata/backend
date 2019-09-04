@@ -10,6 +10,7 @@ import com.pfproject.api.model.project.Materiel;
 import com.pfproject.api.model.project.Personnel;
 
 import java.util.List;
+import java.util.Map;
 
 @Document(collection = "Project")
 public class Project implements Serializable {
@@ -27,6 +28,24 @@ public class Project implements Serializable {
     private List<Step> etapes;
     private List<Materiel> materiels;
     private List<Personnel> personnels;
+    private List<ChargeFixe> chargesFixes;
+    private Map<String, String> charges;
+
+    public List<ChargeFixe> getChargesFixes() {
+        return this.chargesFixes;
+    }
+
+    public void setChargesFixes(List<ChargeFixe> chargesFixes) {
+        this.chargesFixes = chargesFixes;
+    }
+
+    public Map<String, String> getCharges() {
+        return this.charges;
+    }
+
+    public void setCharges(Map<String, String> charges) {
+        this.charges = charges;
+    }
 
     private String createdAt;
 

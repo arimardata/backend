@@ -7,6 +7,7 @@ import com.pfproject.api.dto.project.MaterielDTO;
 import com.pfproject.api.dto.project.PersonnelDTO;
 
 import java.util.List;
+import java.util.Map;
 
 public class ProjectDTO implements Serializable {
     private static final long serialVersionUID = 61921774549107678L;
@@ -22,6 +23,26 @@ public class ProjectDTO implements Serializable {
     private List<StepDTO> etapes;
     private List<MaterielDTO> materiels;
     private List<PersonnelDTO> personnels;
+    private List<ChargeFixeDTO> chargesFixes;
+    private Map<String, String> charges;
+
+    public List<ChargeFixeDTO> getChargesFixes() {
+        return this.chargesFixes;
+    }
+
+    public void setChargesFixes(List<ChargeFixeDTO> chargesFixes) {
+        this.chargesFixes = chargesFixes;
+    }
+
+    public Map<String, String> getCharges()
+
+    {
+        return this.charges;
+    }
+
+    public void setCharges(Map<String, String> charges) {
+        this.charges = charges;
+    }
 
     public String getNumAo() {
         return this.numAo;
