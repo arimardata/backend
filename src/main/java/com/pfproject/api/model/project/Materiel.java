@@ -15,6 +15,15 @@ public class Materiel implements Serializable {
     private String materiel;
     private String quantite;
     private String type;
+    private String etape;
+
+    public String getEtape() {
+        return this.etape;
+    }
+
+    public void setEtape(String etape) {
+        this.etape = etape;
+    }
 
     public String getMaterielId() {
         return this.materielId;

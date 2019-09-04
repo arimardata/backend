@@ -16,6 +16,15 @@ public class Personnel implements Serializable {
     private String diplome;
     private String qualite;
     private String type;
+    private String etape;
+
+    public String getEtape() {
+        return this.etape;
+    }
+
+    public void setEtape(String etape) {
+        this.etape = etape;
+    }
 
     public String getPersonnelId() {
         return this.personnelId;

@@ -55,6 +55,7 @@ public class ProjectDTOConverter implements Converter<ProjectDTO, Project> {
             newMateriel.setMateriel(materiel.getMateriel());
             newMateriel.setQuantite(materiel.getQuantite());
             newMateriel.setType(materiel.getType());
+            newMateriel.setEtape(materiel.getEtape());
             materiels.add(newMateriel);
         }
 
@@ -67,6 +68,7 @@ public class ProjectDTOConverter implements Converter<ProjectDTO, Project> {
             newPersonnel.setDiplome(personnel.getDiplome());
             newPersonnel.setQualite(personnel.getQualite());
             newPersonnel.setType(personnel.getType());
+            newPersonnel.setEtape(personnel.getEtape());
             personnels.add(newPersonnel);
         }
 
