@@ -19,7 +19,7 @@ import com.pfproject.api.service.Personnel.SaisonierService;
 import com.pfproject.api.service.ConsomableService;
 import com.pfproject.api.service.NonConsomableService;
 import com.pfproject.api.service.AppelOffreService;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,6 +64,13 @@ public class ProjetsController {
         List<Project> liste = service.findAll();
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/findOne/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> findOne(@PathVariable String id) {
+        Project projet = service.find(id);
+
+        return new ResponseEntity<>(projet, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/ajouter", method = RequestMethod.POST)
