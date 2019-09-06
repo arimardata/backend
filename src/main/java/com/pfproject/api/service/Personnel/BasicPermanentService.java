@@ -44,7 +44,6 @@ public class BasicPermanentService implements PermanentService {
         final Permanent saved = repository.findOne(id);
         ObjectId objectId = new ObjectId(id);
         permanent.setId(objectId);
-
         if (saved != null) {
             permanent.setCreatedAt(saved.getCreatedAt());
             permanent.setCreatedAt(String.valueOf(LocalDateTime.now()));

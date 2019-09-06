@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface PermanentRepository extends MongoRepository<Permanent, String> {
     @Query("{archived : {$ne : ?0}}")
     List<Permanent> findByArchivedNotEqual(Boolean archived);
+
 }

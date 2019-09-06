@@ -44,7 +44,6 @@ public class BasicSaisonierService implements SaisonierService {
         final Saisonier saved = repository.findOne(id);
         ObjectId objectId = new ObjectId(id);
         saisonier.setId(objectId);
-
         if (saved != null) {
             saisonier.setCreatedAt(saved.getCreatedAt());
             saisonier.setCreatedAt(String.valueOf(LocalDateTime.now()));

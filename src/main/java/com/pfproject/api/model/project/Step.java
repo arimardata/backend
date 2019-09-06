@@ -19,6 +19,15 @@ public class Step implements Serializable {
     private String coutNonConsomable;
     private String coutPermanent;
     private String coutSaisonier;
+    private Boolean done;
+
+    public Boolean getDone() {
+        return this.done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
+    }
 
     public String getCoutConsomable() {
         return this.coutConsomable;

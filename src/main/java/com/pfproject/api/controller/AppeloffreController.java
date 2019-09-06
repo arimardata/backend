@@ -124,7 +124,8 @@ public class AppeloffreController {
 		for (Materiel materiel : materiels) {
 			handleMateriels(materiel);
 		}
-
+		project.setType("Finis");
+		projectService.update(project.getId(), project);
 	}
 
 	public void handlePersonnel(final Personnel personnel) {

@@ -30,6 +30,15 @@ public class Project implements Serializable {
     private List<Personnel> personnels;
     private List<ChargeFixe> chargesFixes;
     private Map<String, String> charges;
+    private String type;
+
+    public String getType() {
+        return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public List<ChargeFixe> getChargesFixes() {
         return this.chargesFixes;

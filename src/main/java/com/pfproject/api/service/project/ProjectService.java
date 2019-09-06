@@ -14,4 +14,6 @@ public interface ProjectService {
 
     Project findByNumAO(String numAo);
 
+    Project update(String id, Project project);
+
 }

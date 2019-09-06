@@ -44,6 +44,7 @@ public class ProjectDTOConverter implements Converter<ProjectDTO, Project> {
             newEtape.setCoutNonConsomable(etape.getCoutNonConsomable());
             newEtape.setCoutPermanent(etape.getCoutPermanent());
             newEtape.setCoutSaisonier(etape.getCoutSaisonier());
+            newEtape.setDone(etape.getDone());
             etapes.add(newEtape);
         }
 

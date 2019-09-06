@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
+import org.bson.types.ObjectId;
 
 import org.apache.log4j.Logger;
 
@@ -26,6 +27,7 @@ public class BasicProjectService implements ProjectService {
     @Override
     public Project create(Project project) {
         project.setCreatedAt(String.valueOf(LocalDateTime.now()));
+        project.setType(("Projet"));
         return repository.save(project);
     }
 
@@ -42,6 +44,16 @@ public class BasicProjectService implements ProjectService {
     @Override
     public Project findByNumAO(String numAo) {
         return repository.findByNumAO(numAo);
+    }
+
+    @Override
+    public Project update(String id, Project project) {
+        ObjectId objectId = new ObjectId(id);
+        project.setId(objectId);
+
+        repository.save(project);
+
+        return project;
     }
 
 }

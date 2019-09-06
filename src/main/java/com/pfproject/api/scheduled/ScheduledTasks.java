@@ -68,8 +68,8 @@ public class ScheduledTasks {
 	@Scheduled(fixedRate = 50000000)
 	public void Verify_cheques() throws ParseException {
 
-		log.info("The time is now {}", dateFormat.format(new Date()));
-		System.out.println("====try====");
+		// log.info("The time is now {}", dateFormat.format(new Date()));
+		// System.out.println("====try====");
 		MongoClient mongoClient = new MongoClient(
 				new MongoClientURI("mongodb://ArmiraDATA:ArmiraDATA1@ds145895.mlab.com:45895/armira"));
 		System.out.println("Collection created successfully");
@@ -97,21 +97,23 @@ public class ScheduledTasks {
 
 			Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(Date);
 
-			System.out.println((date1.getTime() - current.getTime()));
-			System.out.println("id" + id + "Alerte------------->" + Long.parseLong(Alerte.toString()) * 86400000);
-			System.out.println("Margine:  " + (date1.getTime() - current.getTime()));
-			System.out.println("Alerte:  " + (Long.parseLong(Alerte.toString()) * 86400000));
-			System.out.println("Sent:  " + Sent);
+			// System.out.println((date1.getTime() - current.getTime()));
+			// System.out.println("id" + id + "Alerte------------->" +
+			// Long.parseLong(Alerte.toString()) * 86400000);
+			// System.out.println("Margine: " + (date1.getTime() - current.getTime()));
+			// System.out.println("Alerte: " + (Long.parseLong(Alerte.toString()) *
+			// 86400000));
+			// System.out.println("Sent: " + Sent);
 			if (((date1.getTime() - current.getTime()) <= (Long.parseLong(Alerte.toString()) * 86400000))
 					&& (Sent.toString().equalsIgnoreCase("no"))) {
-				System.out.println("sending mail");
+				// System.out.println("sending mail");
 				Mailer.send("clientinfo.arimar@gmail.com", "GECO2018Y", "clientinfo.arimar@gmail.com", "Alerte Cheque!",
 						"Vous avez un cheque dû aujourd'hui de: " + from.toString() + " à: " + to.toString());
-				System.out.println("try");
-				System.out.println(D.get("_id") + "==========" + D.get("Sent"));
+				// System.out.println("try");
+				// System.out.println(D.get("_id") + "==========" + D.get("Sent"));
 
 				collection.updateOne(Filters.eq("_id", id), Updates.set("Sent", "yes"));
-				System.out.println("done");
+				// System.out.println("done");
 
 			}
 
@@ -122,8 +124,8 @@ public class ScheduledTasks {
 
 	@Scheduled(fixedRate = 50000)
 	public void Verify_cheques_notification() {
-		System.out.println("trying");
-		log.info("The time is now {}", dateFormat.format(new Date()));
+		// System.out.println("trying");
+		// log.info("The time is now {}", dateFormat.format(new Date()));
 		System.out.println("====try====");
 		MongoClient mongoClient = new MongoClient(
 				new MongoClientURI("mongodb://ArmiraDATA:ArmiraDATA1@ds145895.mlab.com:45895/armira"));
@@ -152,7 +154,7 @@ public class ScheduledTasks {
 			String StatsType = D.get("StatsType").toString();
 			String Total = D.get("Total").toString();
 			long num = Long.parseLong(Total);
-			System.out.println("Num===" + num);
+			// System.out.println("Num===" + num);
 			if (StatsType.equalsIgnoreCase("ChequeStats")) {
 				System.out.println("Insert======");
 				if (num < count) {
@@ -174,28 +176,27 @@ public class ScheduledTasks {
 			collection.updateOne(filter, query);
 		}
 
-		
 		mongoClient.close();
 	}
 
 	@Scheduled(fixedRate = 50000)
 	public void Verify_AO_notification() {
-		System.out.println("trying");
-		log.info("The time is now {}", dateFormat.format(new Date()));
-		System.out.println("====try====");
+		// System.out.println("trying");
+		// log.info("The time is now {}", dateFormat.format(new Date()));
+		// System.out.println("====try====");
 		MongoClient mongoClient = new MongoClient(
 				new MongoClientURI("mongodb://ArmiraDATA:ArmiraDATA1@ds145895.mlab.com:45895/armira"));
-		System.out.println("Collection created successfully");
+		// System.out.println("Collection created successfully");
 		MongoDatabase database = mongoClient.getDatabase("armira");
-		// Notifications 
+		// Notifications
 		MongoCollection<Document> collectionNotification = database.getCollection("Notification");
 
-		//Cheques 
+		// Cheques
 		MongoCollection<Document> collectionCheque = database.getCollection("AppelOffre");
 		long count = collectionCheque.count();
-		System.out.println("Count: " + count);
+		// System.out.println("Count: " + count);
 
-		//Stats 
+		// Stats
 		MongoCollection<Document> collection = database.getCollection("Stats");
 
 		FindIterable<Document> iterDoc = collection.find();
@@ -210,9 +211,9 @@ public class ScheduledTasks {
 			String StatsType = D.get("StatsType").toString();
 			String Total = D.get("Total").toString();
 			long num = Long.parseLong(Total);
-			System.out.println("Num===" + num);
+			// System.out.println("Num===" + num);
 			if (StatsType.equalsIgnoreCase("AppelOffreStats")) {
-				System.out.println("Insert======");
+				// System.out.println("Insert======");
 				if (num < count) {
 
 					for (int u = 0; u < (count - num); u++) {
