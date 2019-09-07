@@ -12,6 +12,8 @@ public interface ProjectService {
 
     List<Project> findAll();
 
+    List<Project> findByType(String type);
+
     Project findByNumAO(String numAo);
 
     Project update(String id, Project project);

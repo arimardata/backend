@@ -25,6 +25,15 @@ public class ProjectDTO implements Serializable {
     private List<PersonnelDTO> personnels;
     private List<ChargeFixeDTO> chargesFixes;
     private Map<String, String> charges;
+    private String type;
+
+    public String getType() {
+        return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public List<ChargeFixeDTO> getChargesFixes() {
         return this.chargesFixes;

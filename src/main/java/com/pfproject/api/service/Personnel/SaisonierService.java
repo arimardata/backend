@@ -13,6 +13,8 @@ public interface SaisonierService {
 
     List<Saisonier> findAll();
 
+    List<Saisonier> findByArchivedNotEqual(final Boolean archived);
+
     Saisonier update(String id, Saisonier object);
 
     String delete(String id);

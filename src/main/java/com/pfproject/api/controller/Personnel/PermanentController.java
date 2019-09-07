@@ -44,7 +44,7 @@ public class PermanentController {
 
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
 	public ResponseEntity<?> find() {
-		List<Permanent> liste = service.findByArchived();
+		List<Permanent> liste = service.findByArchivedNotEqual(true);
 
 		return new ResponseEntity<>(liste, HttpStatus.OK);
 	}

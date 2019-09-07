@@ -39,10 +39,16 @@ public class BasicPermanentService implements PermanentService {
     }
 
     @Override
+    public List<Permanent> findByArchivedNotEqual(final Boolean archived) {
+        return repository.findByArchivedNotEqual(archived);
+    }
+
+    @Override
     public Permanent update(final String id, final Permanent permanent) {
 
         final Permanent saved = repository.findOne(id);
         ObjectId objectId = new ObjectId(id);
+        permanent.setDisponible(saved.getDisponible());
         permanent.setId(objectId);
         if (saved != null) {
             permanent.setCreatedAt(saved.getCreatedAt());

@@ -53,7 +53,7 @@ public class AdministratifController {
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
-        List<Administratif> liste = service.findByArchived();
+        List<Administratif> liste = service.findByArchivedNotEqual(true);
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }

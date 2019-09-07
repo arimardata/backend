@@ -13,6 +13,8 @@ public interface PermanentService {
 
     List<Permanent> findAll();
 
+    List<Permanent> findByArchivedNotEqual(final Boolean archived);
+
     Permanent update(String id, Permanent object);
 
     String delete(String id);

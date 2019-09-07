@@ -76,8 +76,16 @@ public class ProjetsController {
         return new ResponseEntity<>(projet, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/findByType/{type}", method = RequestMethod.GET)
+    public ResponseEntity<?> findByType(@PathVariable String type) {
+        List<Project> liste = service.findByType(type);
+
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/ajouter", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody final ProjectDTO dto) {
+        dto.setType("Projet");
         Project project = service.create(converterFacade.convertProject(dto));
 
         List<Personnel> personnels = project.getPersonnels();
@@ -105,8 +113,6 @@ public class ProjetsController {
     public ResponseEntity<?> completeStep(@PathVariable String id, @PathVariable String numEtape,
             @PathVariable String restore) {
         Project project = service.find(id);
-
-        log.info(project.getChefDuProjet());
         List<Personnel> personnels = project.getPersonnels();
         List<Materiel> materiels = project.getMateriels();
         List<Step> steps = project.getEtapes();
@@ -138,8 +144,8 @@ public class ProjetsController {
             if (step.getEtape().equals(numEtape))
                 step.setDone(!step.getDone());
         }
+
         Project updated = service.update(id, project);
-        log.info(id + " " + numEtape + " " + restore);
         return new ResponseEntity<>(updated, HttpStatus.OK);
     }
 
@@ -160,7 +166,7 @@ public class ProjetsController {
         for (Materiel materiel : materiels) {
             handleResotreMateriels(materiel, false);
         }
-
+        dto.setType("Projet");
         Project project = service.update(id, converterFacade.convertProject(dto));
 
         personnels = project.getPersonnels();

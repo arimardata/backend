@@ -25,6 +25,7 @@ import com.pfproject.api.model.AppelOffre;
 import com.pfproject.api.model.personnel.Permanent;
 import com.pfproject.api.model.personnel.Saisonier;
 import com.pfproject.api.model.project.Project;
+import com.pfproject.api.model.project.Step;
 import com.pfproject.api.model.stock.Non_consomable;
 
 import org.apache.log4j.Logger;
@@ -117,12 +118,23 @@ public class AppeloffreController {
 		Project project = projectService.findByNumAO(numAo);
 		List<Personnel> personnels = project.getPersonnels();
 		List<Materiel> materiels = project.getMateriels();
+		List<Step> steps = project.getEtapes();
 		for (Personnel personnel : personnels) {
-			handlePersonnel(personnel);
+			for (Step step : steps) {
+				if (!step.getDone() && personnel.getEtape().equals(step.getEtape())) {
+					handlePersonnel(personnel);
+				}
+			}
+
 		}
 
 		for (Materiel materiel : materiels) {
-			handleMateriels(materiel);
+			for (Step step : steps) {
+				if (!step.getDone() && materiel.getEtape().equals(step.getEtape())) {
+					handleMateriels(materiel);
+				}
+			}
+
 		}
 		project.setType("Finis");
 		projectService.update(project.getId(), project);
@@ -224,53 +236,4 @@ public class AppeloffreController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
-	// @RequestMapping(value = "/statistics", method = RequestMethod.GET)
-	// public ResponseEntity<?> statistics() {
-	// List<AppelOffre> liste = service.findAll();
-	// return new ResponseEntity<>(response, HttpStatus.OK);
-	// }
-
-	// search route fonctional
-	// @RequestMapping(value = "/find/{username}", method = RequestMethod.GET)
-	// public ResponseEntity<?> findByUsername(@PathVariable final String username)
-	// {
-	// return new ResponseEntity<>(service.findByUsername(username), HttpStatus.OK);
-	// }
-
-	/*
-	 * @RequestMapping(value = "/update/{id}", method = RequestMethod.POST) public
-	 * ResponseEntity<?> update(@PathVariable final String id, @RequestBody final
-	 * UserDTO dto) { User user = service.find(id);
-	 * user.setUsername(dto.getUsername()); user.setFirstLogin(true);
-	 * user.setPassword(dto.getPassword()); user.setAuthority(dto.getAuthority());
-	 * service.update(id, user);
-	 * 
-	 * final MessageDTO response = new MessageDTO();
-	 * response.setMessage("Mot de passe est changé avec succes");
-	 * 
-	 * return new ResponseEntity<>(response, HttpStatus.OK); }
-	 * 
-	 * @RequestMapping(value = "/passwordReset/{id}", method = RequestMethod.POST)
-	 * public ResponseEntity<?> passwordReset(@PathVariable final String
-	 * id, @RequestBody final UserDTO dto) { User user = service.find(id);
-	 * 
-	 * user.setFirstLogin(false); user.setPassword(dto.getPassword());
-	 * service.update(id, user);
-	 * 
-	 * final MessageDTO response = new MessageDTO();
-	 * response.setMessage("Mot de passe est changé avec succes"); return new
-	 * ResponseEntity<>(response, HttpStatus.OK); }
-	 * 
-	 * @RequestMapping(value = "/disable/{id}", method = RequestMethod.DELETE)
-	 * public ResponseEntity<?> delete(@PathVariable final String id) { //
-	 * service.delete(id); final MessageDTO response = new MessageDTO();
-	 * 
-	 * User user = service.find(id); boolean isEnabled = user.isEnabled(); if
-	 * (isEnabled) { response.setMessage("l'utilisateur a été bloqué");
-	 * user.setEnabled(false); } else {
-	 * response.setMessage("l'utilisateur a été débloqué"); user.setEnabled(true); }
-	 * service.update(id, user);
-	 * 
-	 * return new ResponseEntity<>(response, HttpStatus.OK); }
-	 */
 }

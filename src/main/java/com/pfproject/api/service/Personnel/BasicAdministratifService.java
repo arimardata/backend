@@ -34,12 +34,17 @@ public class BasicAdministratifService implements AdministratifService {
     }
 
     @Override
+    public List<Administratif> findByArchivedNotEqual(final Boolean archived) {
+        return repository.findByArchivedNotEqual(archived);
+    }
+
+    @Override
     public Administratif update(final String id, final Administratif administratif) {
 
         final Administratif saved = repository.findOne(id);
         ObjectId objectId = new ObjectId(id);
         administratif.setId(objectId);
-
+        administratif.setDisponible(saved.getDisponible());
         if (saved != null) {
             administratif.setCreatedAt(saved.getCreatedAt());
             administratif.setUpdatedAt(String.valueOf(LocalDateTime.now()));
@@ -62,6 +67,7 @@ public class BasicAdministratifService implements AdministratifService {
         Administratif saved = repository.findOne(id);
         saved.setArchived(true);
         repository.save(saved);
+
         return id;
     }
 

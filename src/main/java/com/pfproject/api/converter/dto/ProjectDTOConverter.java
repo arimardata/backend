@@ -31,6 +31,7 @@ public class ProjectDTOConverter implements Converter<ProjectDTO, Project> {
         project.setDateDebut(dto.getDateDebut());
         project.setDateFin(dto.getDateFin());
         project.setChefDuProjet(dto.getChefDuProjet());
+        project.setType(dto.getType());
 
         List<StepDTO> etapesDto = dto.getEtapes();
         List<Step> etapes = new ArrayList<Step>();

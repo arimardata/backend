@@ -56,4 +56,9 @@ public class BasicProjectService implements ProjectService {
         return project;
     }
 
+    @Override
+    public List<Project> findByType(String type) {
+        return repository.findByType(type);
+    }
+
 }

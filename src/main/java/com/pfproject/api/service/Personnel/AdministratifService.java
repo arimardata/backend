@@ -13,6 +13,8 @@ public interface AdministratifService {
 
     List<Administratif> findAll();
 
+    List<Administratif> findByArchivedNotEqual(final Boolean archived);
+
     Administratif update(String id, Administratif object);
 
     String delete(String id);
