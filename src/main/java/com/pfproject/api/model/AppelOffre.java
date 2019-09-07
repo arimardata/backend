@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class AppelOffre extends BaseEntity {
 
 	private static final long serialVersionUID = 7954325925563724764L;
-	//private ObjectId id;
+	// private ObjectId id;
 
 	private String chef_ouvrage;
 	private String num_AO;
@@ -25,11 +25,76 @@ public class AppelOffre extends BaseEntity {
 	private String files;
 
 	private String cautionFinal;
+	private String bankCautionFinal;
+	private String periodeCautionFinal;
+	private String dateCautionFinal;
+
+	private String cautionProvisoire;
+	private String bankCautionProvisoire;
+	private String periodeCautionProvisoire;
+	private String dateCautionProvisoire;
+
 	private String moinsDisant;
 	private String montant;
 
 	public AppelOffre() {
 
+	}
+
+	public String getBankCautionFinal() {
+		return this.bankCautionFinal;
+	}
+
+	public void setBankCautionFinal(String bankCautionFinal) {
+		this.bankCautionFinal = bankCautionFinal;
+	}
+
+	public String getPeriodeCautionFinal() {
+		return this.periodeCautionFinal;
+	}
+
+	public void setPeriodeCautionFinal(String periodeCautionFinal) {
+		this.periodeCautionFinal = periodeCautionFinal;
+	}
+
+	public String getDateCautionFinal() {
+		return this.dateCautionFinal;
+	}
+
+	public void setDateCautionFinal(String dateCautionFinal) {
+		this.dateCautionFinal = dateCautionFinal;
+	}
+
+	public String getCautionProvisoire() {
+		return this.cautionProvisoire;
+	}
+
+	public void setCautionProvisoire(String cautionProvisoire) {
+		this.cautionProvisoire = cautionProvisoire;
+	}
+
+	public String getBankCautionProvisoire() {
+		return this.bankCautionProvisoire;
+	}
+
+	public void setBankCautionProvisoire(String bankCautionProvisoire) {
+		this.bankCautionProvisoire = bankCautionProvisoire;
+	}
+
+	public String getPeriodeCautionProvisoire() {
+		return this.periodeCautionProvisoire;
+	}
+
+	public void setPeriodeCautionProvisoire(String periodeCautionProvisoire) {
+		this.periodeCautionProvisoire = periodeCautionProvisoire;
+	}
+
+	public String getDateCautionProvisoire() {
+		return this.dateCautionProvisoire;
+	}
+
+	public void setDateCautionProvisoire(String dateCautionProvisoire) {
+		this.dateCautionProvisoire = dateCautionProvisoire;
 	}
 
 	public String getChef_ouvrage() {
@@ -96,7 +161,6 @@ public class AppelOffre extends BaseEntity {
 		this.estimation = estimation;
 	}
 
-	
 	public String getAutres_details() {
 		return autres_details;
 	}
@@ -165,5 +229,4 @@ public class AppelOffre extends BaseEntity {
 		this.date_limite = date_limite;
 	}
 
-	
 }

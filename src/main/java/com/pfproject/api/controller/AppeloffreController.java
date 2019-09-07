@@ -28,8 +28,6 @@ import com.pfproject.api.model.project.Project;
 import com.pfproject.api.model.project.Step;
 import com.pfproject.api.model.stock.Non_consomable;
 
-import org.apache.log4j.Logger;
-
 import java.io.IOException;
 
 import java.util.List;
@@ -44,8 +42,6 @@ public class AppeloffreController {
 	private final PermanentService servicePermanent;
 	private final SaisonierService serviceSaisonier;
 	private final ConverterFacade converterFacade;
-
-	static Logger log = Logger.getLogger(AppeloffreController.class.getName());
 
 	@Autowired
 	public AppeloffreController(final AppelOffreService service, final ProjectService projectService,
@@ -185,14 +181,33 @@ public class AppeloffreController {
 		}
 	}
 
-	@RequestMapping(value = "/AjouterCaution/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/AjouterCautionFinal/{id}", method = RequestMethod.POST)
 	public ResponseEntity<?> AjouterCautionFinal(@PathVariable String id, @RequestBody final AoDTO dto) {
 		AppelOffre saved = service.find(id);
 		saved.setCautionFinal(dto.getCautionFinal());
+		saved.setDateCautionFinal(dto.getDateCautionFinal());
+		saved.setBankCautionFinal(dto.getBankCautionFinal());
+		saved.setPeriodeCautionFinal(dto.getPeriodeCautionFinal());
+
+		AppelOffre updated = service.update(id, saved);
+		System.out.println(updated.getBankCautionFinal());
+		System.out.println(dto.getBankCautionFinal());
+		final MessageDTO response = new MessageDTO();
+		response.setMessage("la caution finale a été ajouté");
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/AjouterCautionProvisoire/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> AjouterCautionProvisoire(@PathVariable String id, @RequestBody final AoDTO dto) {
+		AppelOffre saved = service.find(id);
+		saved.setCautionProvisoire(dto.getCautionProvisoire());
+		saved.setDateCautionProvisoire(dto.getDateCautionProvisoire());
+		saved.setBankCautionProvisoire(dto.getBankCautionProvisoire());
+		saved.setPeriodeCautionProvisoire(dto.getPeriodeCautionProvisoire());
 
 		service.update(id, saved);
 		final MessageDTO response = new MessageDTO();
-		response.setMessage("la caution final a été ajouté");
+		response.setMessage("la caution provisoire a été ajouté");
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
@@ -220,9 +235,6 @@ public class AppeloffreController {
 		AppelOffre saved = service.find(id);
 		saved.setMoinsDisant(dto.getMoinsDisant());
 		saved.setMontant(dto.getMontant());
-
-		log.info("moins disant : " + dto.getMoinsDisant());
-		log.info("montant : " + dto.getMontant());
 
 		service.update(id, saved);
 		final MessageDTO response = new MessageDTO();
