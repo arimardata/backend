@@ -117,7 +117,9 @@ public class AppeloffreController {
 		List<Step> steps = project.getEtapes();
 		for (Personnel personnel : personnels) {
 			for (Step step : steps) {
+
 				if (!step.getDone() && personnel.getEtape().equals(step.getEtape())) {
+
 					handlePersonnel(personnel);
 				}
 			}
@@ -128,6 +130,7 @@ public class AppeloffreController {
 			for (Step step : steps) {
 				if (!step.getDone() && materiel.getEtape().equals(step.getEtape())) {
 					handleMateriels(materiel);
+					step.setDone(true);
 				}
 			}
 
@@ -167,7 +170,7 @@ public class AppeloffreController {
 		int oldQuantite, usedQuantite, newQuantite;
 		switch (type) {
 
-		case "Non consomable":
+		case "Non consommable":
 			Non_consomable nonConsomable = serviceNonConsomable.find(id);
 			oldQuantite = Integer.parseInt(nonConsomable.getQuantite());
 			usedQuantite = Integer.parseInt(materiel.getQuantite());

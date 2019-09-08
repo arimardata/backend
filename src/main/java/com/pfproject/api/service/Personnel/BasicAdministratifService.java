@@ -44,7 +44,7 @@ public class BasicAdministratifService implements AdministratifService {
         final Administratif saved = repository.findOne(id);
         ObjectId objectId = new ObjectId(id);
         administratif.setId(objectId);
-        administratif.setDisponible(saved.getDisponible());
+        // administratif.setDisponible(saved.getDisponible());
         if (saved != null) {
             administratif.setCreatedAt(saved.getCreatedAt());
             administratif.setUpdatedAt(String.valueOf(LocalDateTime.now()));

@@ -20,6 +20,7 @@ public class AdministratifDTOConverter implements Converter<AdministratifDTO, Ad
         administratif.setQualite(dto.getQualite());
         administratif.setSalaire(dto.getSalaire());
         administratif.setTel(dto.getTel());
+        administratif.setDisponible(dto.getDisponible());
 
         return administratif;
     }

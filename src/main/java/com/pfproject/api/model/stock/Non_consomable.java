@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Non_consomable")
+@Document(collection = "Non_consommable")
 public class Non_consomable extends Materiel implements Serializable {
 
     private static final long serialVersionUID = 8954425825563724764L;

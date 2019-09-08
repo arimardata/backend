@@ -201,7 +201,8 @@ public class ProjetsController {
             saisonier.setDisponible(false);
             saisonier.setDateDebut(dateDebut);
             saisonier.setDateFin(dateFin);
-            serviceSaisonier.update(personnel.getPersonnelId(), saisonier);
+
+            Saisonier saved = serviceSaisonier.update(personnel.getPersonnelId(), saisonier);
             break;
         default:
             return;
@@ -239,7 +240,7 @@ public class ProjetsController {
         String id = materiel.getMaterielId();
         int oldQuantite, usedQuantite, newQuantite;
         switch (type) {
-        case "Consomable":
+        case "Consommable":
             if (!nonConsomableOnly) {
                 Consomable consomable = serviceConsomable.find(id);
                 oldQuantite = Integer.parseInt(consomable.getQuantite());
@@ -249,7 +250,7 @@ public class ProjetsController {
                 serviceConsomable.update(id, consomable);
             }
             break;
-        case "Non consomable":
+        case "Non consommable":
             Non_consomable nonConsomable = serviceNonConsomable.find(id);
             oldQuantite = Integer.parseInt(nonConsomable.getQuantite());
             usedQuantite = Integer.parseInt(materiel.getQuantite());
@@ -268,7 +269,7 @@ public class ProjetsController {
         String id = materiel.getMaterielId();
         int oldQuantite, usedQuantite, newQuantite;
         switch (type) {
-        case "Consomable":
+        case "Consommable":
             if (!nonConsomableOnly) {
                 Consomable consomable = serviceConsomable.find(id);
                 oldQuantite = Integer.parseInt(consomable.getQuantite());
@@ -279,7 +280,7 @@ public class ProjetsController {
             }
 
             break;
-        case "Non consomable":
+        case "Non consommable":
             Non_consomable nonConsomable = serviceNonConsomable.find(id);
             oldQuantite = Integer.parseInt(nonConsomable.getQuantite());
             usedQuantite = Integer.parseInt(materiel.getQuantite());

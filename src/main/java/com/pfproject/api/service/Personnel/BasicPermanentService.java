@@ -48,7 +48,7 @@ public class BasicPermanentService implements PermanentService {
 
         final Permanent saved = repository.findOne(id);
         ObjectId objectId = new ObjectId(id);
-        permanent.setDisponible(saved.getDisponible());
+        // permanent.setDisponible(saved.getDisponible());
         permanent.setId(objectId);
         if (saved != null) {
             permanent.setCreatedAt(saved.getCreatedAt());

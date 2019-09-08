@@ -20,6 +20,7 @@ public class PermanentDTOConverter implements Converter<PermanentDTO, Permanent>
         permanent.setQualite(dto.getQualite());
         permanent.setSalaire(dto.getSalaire());
         permanent.setTel(dto.getTel());
+        permanent.setDisponible(dto.getDisponible());
 
         return permanent;
     }
