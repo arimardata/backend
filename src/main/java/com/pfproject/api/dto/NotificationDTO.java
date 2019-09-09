@@ -26,7 +26,7 @@ public class NotificationDTO implements Serializable {
 	}
 
 	public void setNotificationType(String notificationType) {
-		NotificationType = notificationType;
+		this.NotificationType = notificationType;
 	}
 
 	public String getNotificationDetail() {
@@ -34,7 +34,7 @@ public class NotificationDTO implements Serializable {
 	}
 
 	public void setNotificationDetail(String notificationDetail) {
-		NotificationDetail = notificationDetail;
+		this.NotificationDetail = notificationDetail;
 	}
 
 	public String getNotificationSeen() {
@@ -42,8 +42,14 @@ public class NotificationDTO implements Serializable {
 	}
 
 	public void setNotificationSeen(String notificationSeen) {
-		NotificationSeen = notificationSeen;
+		this.NotificationSeen = notificationSeen;
 	}
+
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
+
+
 
 
 

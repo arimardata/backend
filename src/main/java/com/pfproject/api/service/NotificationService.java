@@ -14,6 +14,10 @@ public interface NotificationService {
 	String delete(String id);
 
 	Notification create(Notification Notification);
+
+
+
+	List<Notification> findFirst5no();
 	
 	/*Cheque Modifier(String id, Cheque object);*/
 

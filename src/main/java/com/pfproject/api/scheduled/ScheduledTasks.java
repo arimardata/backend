@@ -161,9 +161,10 @@ public class ScheduledTasks {
 
 						Document obj1 = new Document();
 
-						obj1.put("NotificationType", "ChequeNotification");
-						obj1.put("NotificationDetail", "You have a new Cheque");
-						obj1.put("NotificationSeen", "no");
+						obj1.put("notificationType", "ChequeNotification");
+						obj1.put("notificationDetail", "You have a new Cheque");
+						obj1.put("notificationSeen", "no");
+						//obj1.put("idtarget", id.toString());
 						collectionNotification.insertOne(obj1);
 					}
 
@@ -219,9 +220,10 @@ public class ScheduledTasks {
 
 						Document obj1 = new Document();
 
-						obj1.put("NotificationType", "AppelOffreNotification");
-						obj1.put("NotificationDetail", "You have a new AppelOffre");
-						obj1.put("NotificationSeen", "no");
+						obj1.put("notificationType", "AppelOffreNotification");
+						obj1.put("notificationDetail", "You have a new AppelOffre");
+						obj1.put("notificationSeen", "no");
+						//obj1.put("idtarget", id.toString());
 						collectionNotification.insertOne(obj1);
 					}
 

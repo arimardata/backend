@@ -8,27 +8,31 @@ public class Notification extends BaseEntity {
 	private static final long serialVersionUID = 7937325925563724764L;
 	
 	//private ObjectId id;
-	private String NotificationType;
-	private String NotificationDetail;
-	private String NotificationSeen;
+	private String notificationType;
+	private String notificationDetail;
+	private String notificationSeen;
 	public String getNotificationType() {
-		return NotificationType;
+		return notificationType;
 	}
 	public void setNotificationType(String notificationType) {
-		NotificationType = notificationType;
+		this.notificationType = notificationType;
 	}
 	public String getNotificationDetail() {
-		return NotificationDetail;
+		return notificationDetail;
 	}
 	public void setNotificationDetail(String notificationDetail) {
-		NotificationDetail = notificationDetail;
+		this.notificationDetail = notificationDetail;
 	}
 	public String getNotificationSeen() {
-		return NotificationSeen;
+		return notificationSeen;
 	}
 	public void setNotificationSeen(String notificationSeen) {
-		NotificationSeen = notificationSeen;
+		this.notificationSeen = notificationSeen;
 	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 
 	
 	

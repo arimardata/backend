@@ -9,6 +9,10 @@ import com.pfproject.api.repository.ChequeRepository;
 import com.pfproject.api.repository.NotificationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,10 +27,12 @@ public class BasicNotificationService implements NotificationService {
 
 	private final NotificationRepository repository;
 	static Logger log = Logger.getLogger(BasicNotificationService.class.getName());
-
+	//private final MongoTemplate mongoTemplate=new MongoTemplate());
+	
 	@Autowired
 	public BasicNotificationService(final NotificationRepository repository) {
 		this.repository = repository;
+		
 	}
 
 	@Override
@@ -54,6 +60,7 @@ public class BasicNotificationService implements NotificationService {
 		repository.save(Notification);
 		return Notification;
 	}
+	
 	/*
 	@Override
 	public Cheque Modifier(final String id, final Cheque Cheque) {
@@ -73,6 +80,23 @@ public class BasicNotificationService implements NotificationService {
 		Notification.setCreatedAt(String.valueOf(LocalDateTime.now()));
         return repository.save(Notification);
     }
+
+	@Override
+	public List<Notification> findFirst5no() {
+	PageRequest request = new PageRequest(0, 5);
+	List<Notification> not = repository.findOneActiveOldest(request).getContent();
+	return not;
+	
+	}
+	/*
+	@Override
+    public List<Notification> findFirst5() {
+        Query query = new Query(Criteria.where("seen").is("no")).limit(5);
+        
+        repository.find(query,Notification.class);
+        		return mongoTemplate.find(query, Notification.class);
+    }
+	*/
 	/*
 	 * @Override public void Change_Etat(final String id,final String New_Etat) {
 	 * 
