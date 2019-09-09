@@ -14,4 +14,6 @@ public interface NonConsomableService {
     Non_consomable update(String id, Non_consomable object);
 
     String delete(String id);
+
+    Long count();
 }

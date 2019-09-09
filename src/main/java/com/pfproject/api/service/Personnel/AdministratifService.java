@@ -9,9 +9,15 @@ public interface AdministratifService {
 
     Administratif find(String id);
 
+    List<Administratif> findByArchived();
+
     List<Administratif> findAll();
+
+    List<Administratif> findByArchivedNotEqual(final Boolean archived);
 
     Administratif update(String id, Administratif object);
 
     String delete(String id);
+
+    Long count();
 }

@@ -43,7 +43,7 @@ public class SaisonierController {
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
-        List<Saisonier> liste = service.findAll();
+        List<Saisonier> liste = service.findByArchivedNotEqual(true);
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }

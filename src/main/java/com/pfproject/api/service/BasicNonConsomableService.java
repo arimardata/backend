@@ -24,6 +24,11 @@ public class BasicNonConsomableService implements NonConsomableService {
     }
 
     @Override
+    public Long count() {
+        return repository.count();
+    }
+
+    @Override
     public Non_consomable find(final String id) {
         return repository.findOne(id);
     }

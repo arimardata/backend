@@ -4,9 +4,11 @@ import com.pfproject.api.model.AppelOffre;
 import com.pfproject.api.repository.AppelOffreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.pfproject.api.service.AppelOffreService;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
@@ -59,16 +61,30 @@ public class BasicAppelOffreService implements AppelOffreService {
 		repository.delete(id);
 		return id;
 	}
-	/*
-	 * @Override public void Change_Etat(final String id,final String New_Etat) {
-	 * 
-	 * final AppelOffre saved=repository.findOne(id);
-	 * 
-	 * saved.setEtat(New_Etat);
-	 * 
-	 * repository.save();
-	 * 
-	 * }
-	 */
+
+	@Override
+	public List<String> findByEtat(String etat) {
+		List<AppelOffre> aos = repository.findByEtat(etat);
+		List<String> numAos = new ArrayList<String>();
+		for (AppelOffre ao : aos) {
+			numAos.add(ao.getNum_AO());
+		}
+		return numAos;
+	}
+
+	@Override
+	public AppelOffre findByNum_AO(String num_AO) {
+		return repository.findByNumAO(num_AO);
+	}
+
+	@Override
+	public Long countByEtat(String etat) {
+		return repository.countByEtat(etat);
+	}
+
+	@Override
+	public Long count() {
+		return repository.count();
+	}
 
 }

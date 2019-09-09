@@ -3,6 +3,7 @@ package com.pfproject.api.converter.factory;
 import com.pfproject.api.converter.dto.*;
 import com.pfproject.api.dto.*;
 import com.pfproject.api.dto.personnel.*;
+import com.pfproject.api.dto.project.ProjectDTO;
 import com.pfproject.api.dto.stock.*;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -31,6 +32,7 @@ public class ConverterFactory {
         converters.put(AdministratifDTO.class, new AdministratifDTOConverter());
         converters.put(PermanentDTO.class, new PermanentDTOConverter());
         converters.put(SaisonierDTO.class, new SaisonierDTOConverter());
+        converters.put(ProjectDTO.class, new ProjectDTOConverter());
     }
 
     public Converter getConverter(final Object type) {

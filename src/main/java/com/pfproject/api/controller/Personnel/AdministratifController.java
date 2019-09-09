@@ -11,27 +11,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pfproject.api.service.Personnel.AdministratifService;
+import com.pfproject.api.service.Personnel.*;
 import com.pfproject.api.dto.MessageDTO;
 import com.pfproject.api.dto.personnel.AdministratifDTO;
 import com.pfproject.api.model.personnel.Administratif;
+import com.pfproject.api.model.personnel.Permanent;
+import com.pfproject.api.model.personnel.Saisonier;
 
 import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/api/personnel/administratif")
 public class AdministratifController {
 
     private final AdministratifService service;
-    static Logger log = Logger.getLogger(PermanentController.class.getName());
+    private final PermanentService permanentservice;
+    private final SaisonierService saisonierservice;
 
     private final ConverterFacade converterFacade;
 
     @Autowired
-    public AdministratifController(final AdministratifService service, final ConverterFacade converterFacade) {
+    public AdministratifController(final AdministratifService service, SaisonierService saisonierservice,
+            PermanentService permanentservice, final ConverterFacade converterFacade) {
         this.service = service;
+        this.permanentservice = permanentservice;
+        this.saisonierservice = saisonierservice;
         this.converterFacade = converterFacade;
     }
 
@@ -44,9 +53,41 @@ public class AdministratifController {
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
-        List<Administratif> liste = service.findAll();
+        List<Administratif> liste = service.findByArchivedNotEqual(true);
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/findNomPrenom", method = RequestMethod.GET)
+    public ResponseEntity<?> findNomPrenom() {
+        List<Administratif> administratifs = service.findAll();
+        List<Saisonier> saisoniers = saisonierservice.findAll();
+        List<Permanent> permanents = permanentservice.findAll();
+
+        List<HashMap<String, String>> response = new ArrayList<HashMap<String, String>>();
+
+        for (Administratif administratif : administratifs) {
+            HashMap<String, String> values = new HashMap<String, String>();
+            values.put("id", administratif.getId());
+            values.put("nom", administratif.getNom() + " " + administratif.getPrenom());
+            response.add(values);
+        }
+
+        for (Saisonier saisonier : saisoniers) {
+            HashMap<String, String> values = new HashMap<String, String>();
+            values.put("id", saisonier.getId());
+            values.put("nom", saisonier.getNom() + " " + saisonier.getPrenom());
+            response.add(values);
+        }
+
+        for (Permanent permanent : permanents) {
+            HashMap<String, String> values = new HashMap<String, String>();
+            values.put("id", permanent.getId());
+            values.put("nom", permanent.getNom() + " " + permanent.getPrenom());
+            response.add(values);
+        }
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/findone/{id}", method = RequestMethod.GET)

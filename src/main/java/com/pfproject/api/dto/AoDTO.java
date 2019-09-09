@@ -7,7 +7,7 @@ import org.bson.types.ObjectId;
 public class AoDTO implements Serializable {
 	private static final long serialVersionUID = 61901774549107678L;
 	// private ObjectId id;
-	//private ObjectId id;
+	// private ObjectId id;
 
 	private String chef_ouvrage;
 	private String Num_AO;
@@ -24,22 +24,88 @@ public class AoDTO implements Serializable {
 	private String pdfs;
 	private String files;
 
-	private String cautionFinal;
 	private String moinsDisant;
 	private String montant;
+
+	private String cautionFinal;
+	private String bankCautionFinal;
+	private String periodeCautionFinal;
+	private String dateCautionFinal;
+
+	private String cautionProvisoire;
+	private String bankCautionProvisoire;
+	private String periodeCautionProvisoire;
+	private String dateCautionProvisoire;
+
+	public String getBankCautionFinal() {
+		return this.bankCautionFinal;
+	}
+
+	public void setBankCautionFinal(String bankCautionFinal) {
+		this.bankCautionFinal = bankCautionFinal;
+	}
+
+	public String getPeriodeCautionFinal() {
+		return this.periodeCautionFinal;
+	}
+
+	public void setPeriodeCautionFinal(String periodeCautionFinal) {
+		this.periodeCautionFinal = periodeCautionFinal;
+	}
+
+	public String getDateCautionFinal() {
+		return this.dateCautionFinal;
+	}
+
+	public void setDateCautionFinal(String dateCautionFinal) {
+		this.dateCautionFinal = dateCautionFinal;
+	}
+
+	public String getCautionProvisoire() {
+		return this.cautionProvisoire;
+	}
+
+	public void setCautionProvisoire(String cautionProvisoire) {
+		this.cautionProvisoire = cautionProvisoire;
+	}
+
+	public String getBankCautionProvisoire() {
+		return this.bankCautionProvisoire;
+	}
+
+	public void setBankCautionProvisoire(String bankCautionProvisoire) {
+		this.bankCautionProvisoire = bankCautionProvisoire;
+	}
+
+	public String getPeriodeCautionProvisoire() {
+		return this.periodeCautionProvisoire;
+	}
+
+	public void setPeriodeCautionProvisoire(String periodeCautionProvisoire) {
+		this.periodeCautionProvisoire = periodeCautionProvisoire;
+	}
+
+	public String getDateCautionProvisoire() {
+		return this.dateCautionProvisoire;
+	}
+
+	public void setDateCautionProvisoire(String dateCautionProvisoire) {
+		this.dateCautionProvisoire = dateCautionProvisoire;
+	}
+
+	public AoDTO() {
+		super();
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-/*
-	public ObjectId getId() {
-		return id;
-	}
 
-	public void setId(ObjectId id) {
-		this.id = id;
-	}
-*/
+	/*
+	 * public ObjectId getId() { return id; }
+	 * 
+	 * public void setId(ObjectId id) { this.id = id; }
+	 */
 	public String getChef_ouvrage() {
 		return chef_ouvrage;
 	}
@@ -104,14 +170,14 @@ public class AoDTO implements Serializable {
 		Estimation = estimation;
 	}
 
-	
-
 	public String getDate_limite() {
 		return Date_limite;
 	}
+
 	public void setDate_limite(String date_limite) {
 		Date_limite = date_limite;
 	}
+
 	public String getAutres_details() {
 		return Autres_details;
 	}

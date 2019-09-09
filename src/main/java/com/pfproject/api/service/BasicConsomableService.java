@@ -24,6 +24,11 @@ public class BasicConsomableService implements ConsomableService {
     }
 
     @Override
+    public Long count() {
+        return repository.count();
+    }
+
+    @Override
     public Consomable find(final String id) {
         return repository.findOne(id);
     }
