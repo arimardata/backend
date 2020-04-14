@@ -6,7 +6,8 @@ import com.pfproject.api.model.Authority;
 public class UserDTO implements Serializable {
 
     private static final long serialVersionUID = 91901774547107674L;
-
+    
+    private String email;
     private String username;
     private String password;
     private Authority authority;
@@ -46,4 +47,12 @@ public class UserDTO implements Serializable {
     public void setFirstLogin(final boolean firstLogin) {
         this.firstLogin = firstLogin;
     }
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(final String email) {
+		this.email = email;
+	}
 }

@@ -13,6 +13,7 @@ public class User extends BaseEntity implements UserDetails {
     private Authority authority;
     private String username;
     private String password;
+    private String email;
     private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
@@ -94,4 +95,12 @@ public class User extends BaseEntity implements UserDetails {
     public void setFirstLogin(final boolean firstLogin) {
         this.firstLogin = firstLogin;
     }
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(final String email) {
+		this.email = email;
+	}
 }

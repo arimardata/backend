@@ -1,11 +1,9 @@
 package com.pfproject.api.controller;
 
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.AoDTO;
-// import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.MessageDTO;
-import com.pfproject.api.model.project.Personnel;
-import com.pfproject.api.model.project.Materiel;
+
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,12 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pfproject.api.dto.AoDTO;
+//import com.pfproject.api.converter.ConverterFacade;
+import com.pfproject.api.dto.MessageDTO;
+
 import com.pfproject.api.service.AppelOffreService;
 import com.pfproject.api.service.project.ProjectService;
 import com.pfproject.api.service.NonConsomableService;
 import com.pfproject.api.service.Personnel.PermanentService;
 import com.pfproject.api.service.Personnel.SaisonierService;
+
 import com.pfproject.api.model.AppelOffre;
+import com.pfproject.api.model.project.Personnel;
+import com.pfproject.api.model.project.Materiel;
 import com.pfproject.api.model.personnel.Permanent;
 import com.pfproject.api.model.personnel.Saisonier;
 import com.pfproject.api.model.project.Project;

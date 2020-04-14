@@ -34,6 +34,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mongodb.DBCursor;
@@ -48,10 +49,11 @@ import com.mongodb.client.model.Updates;
 import com.pfproject.api.controller.ChequeController;
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.model.Cheque;
+import com.pfproject.api.model.User;
 import com.pfproject.api.repository.ChequeRepository;
 import com.pfproject.api.service.BasicChequeService;
 import com.pfproject.api.service.ChequeService;
-
+import com.pfproject.api.service.UserService;
 @Component
 
 public class ScheduledTasks {
@@ -67,6 +69,8 @@ public class ScheduledTasks {
 	 */
 	@Scheduled(fixedRate = 50000000)
 	public void Verify_cheques() throws ParseException {
+		
+		
 
 		// log.info("The time is now {}", dateFormat.format(new Date()));
 		// System.out.println("====try====");
@@ -75,7 +79,38 @@ public class ScheduledTasks {
 		System.out.println("Collection created successfully");
 		MongoDatabase database = mongoClient.getDatabase("armira");
 		MongoCollection<Document> collection = database.getCollection("Cheque");
+		MongoCollection<Document> collectionemail = database.getCollection("email");
+		//
+		
+		FindIterable<Document> iterDoc2 = collectionemail.find();
 
+
+		// Getting the iterator
+		Iterator<Document> it2 = iterDoc2.iterator();
+		Document D2 = it2.next();
+		String email = "clientinfo.arimar@gmail.com";
+		while (it2.hasNext()) {
+
+			
+			Object iduse = D2.get("statut");
+			
+			if(iduse=="actual") {
+				
+				
+				
+				email = D2.get("email").toString();
+				break;
+			}
+
+			
+		}
+		
+		
+		
+		
+		
+		
+		//
 		FindIterable<Document> iterDoc = collection.find();
 		int i = 1;
 
@@ -107,7 +142,9 @@ public class ScheduledTasks {
 			if (((date1.getTime() - current.getTime()) <= (Long.parseLong(Alerte.toString()) * 86400000))
 					&& (Sent.toString().equalsIgnoreCase("no"))) {
 				// System.out.println("sending mail");
-				Mailer.send("clientinfo.arimar@gmail.com", "GECO2018Y", "clientinfo.arimar@gmail.com", "Alerte Cheque!",
+
+
+				Mailer.send("clientinfo.arimar@gmail.com", "GECO2018Y",email , "Alerte Cheque!",
 						"Vous avez un cheque dû aujourd'hui de: " + from.toString() + " à: " + to.toString());
 				// System.out.println("try");
 				// System.out.println(D.get("_id") + "==========" + D.get("Sent"));

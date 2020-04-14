@@ -1,9 +1,16 @@
 package com.pfproject.api.controller;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.UserDTO;
 import com.pfproject.api.service.UserService;
 import com.pfproject.api.dto.MessageDTO;
+
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -75,7 +82,9 @@ public class SignUpController {
         user.setFirstLogin(true);
         user.setPassword(dto.getPassword());
         user.setAuthority(dto.getAuthority());
+        user.setEmail(dto.getEmail());
         service.update(id, user);
+        
 
         final MessageDTO response = new MessageDTO();
         response.setMessage("Mot de passe est changé avec succes");
@@ -114,5 +123,41 @@ public class SignUpController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/updateemail", method = RequestMethod.POST)
+    public ResponseEntity<?> updateemail(/*@PathVariable final String id*/ @RequestBody final UserDTO dto) {
+    	
+    	//User user = service.find(id);
+    	//user.setAuthority(dto.getAuthority());
+    	
+    	MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://ArmiraDATA:ArmiraDATA1@ds145895.mlab.com:45895/armira"));
+    	
+    	MongoDatabase database = mongoClient.getDatabase("armira");
+
+
+		BasicDBObject query = new BasicDBObject();
+		query.put("statut", "actual"); // (1)
+
+		BasicDBObject newDocument = new BasicDBObject();
+		newDocument.put("email", dto.getEmail()); // (2)
+
+		BasicDBObject updateObject = new BasicDBObject();
+		updateObject.put("$set", newDocument); // (3)
+
+		database.getCollection("email").updateOne(query, updateObject);
+        
+        //user.setEmail(dto.getEmail());
+        //System.out.println(user.getEmail());
+        //service.update(id, user);
+        
+        
+        final MessageDTO response = new MessageDTO();
+        response.setMessage("L'email est changé avec succes");
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+        
+    }
+    
+   
 
 }
